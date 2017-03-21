@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.activity;
 
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.fragment.AftersomeFragment;
 import com.atguigu.blackhumor.fragment.BaseFragment;
-import com.atguigu.blackhumor.fragment.DiscoveryFragment;
-import com.atguigu.blackhumor.fragment.PartitionFragment;
-import com.atguigu.blackhumor.fragment.RecommendFragment;
+import com.atguigu.blackhumor.sildefragment.CollectionFragment;
+import com.atguigu.blackhumor.sildefragment.FavouriteFragment;
+import com.atguigu.blackhumor.sildefragment.HistoryFragment;
 import com.atguigu.blackhumor.sildefragment.MainFragment;
+import com.atguigu.blackhumor.sildefragment.ThemeFragment;
+import com.atguigu.blackhumor.sildefragment.ViewFragment;
+import com.atguigu.blackhumor.sildefragment.WalletFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,18 +87,20 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 Toast.makeText(MainActivity.this, "点击登陆", Toast.LENGTH_SHORT).show();
             }
         });
+        NavigationMenuView childAt = (NavigationMenuView) navView.getChildAt(0);
+        childAt.setVerticalScrollBarEnabled(false);
     }
 
     @Override
     protected void initData() {
         fragments = new ArrayList<>();
         fragments.add(new MainFragment());
-        fragments.add(new RecommendFragment());
-        fragments.add(new AftersomeFragment());
-        fragments.add(new PartitionFragment());
-        fragments.add(new DiscoveryFragment());
-        fragments.add(new DiscoveryFragment());
-        fragments.add(new DiscoveryFragment());
+        fragments.add(new ViewFragment());
+        fragments.add(new CollectionFragment());
+        fragments.add(new HistoryFragment());
+        fragments.add(new FavouriteFragment());
+        fragments.add(new WalletFragment());
+        fragments.add(new ThemeFragment());
         Fragment baseFragment = fragments.get(0);
         switchFragment(baseFragment);
     }

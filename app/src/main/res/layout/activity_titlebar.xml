@@ -28,7 +28,7 @@
                 android:id="@+id/tv_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/bangumi_common_ic_serializing" />
+                android:drawableLeft="@drawable/bili_default_avatar" />
 
             <ImageView
                 android:layout_width="6dp"

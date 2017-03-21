@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,6 +22,9 @@ import com.youth.banner.transformer.CubeInTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by 万里洋 on 2017/3/21.
@@ -62,7 +67,9 @@ public class HomeAdapter extends RecyclerView.Adapter {
      */
     private final LayoutInflater inflater;
 
+
     private int currentType;
+
 
     public HomeAdapter(Context context, HomeBean.DataBean data) {
         this.mContext = context;
@@ -76,6 +83,8 @@ public class HomeAdapter extends RecyclerView.Adapter {
         if (viewType == BANNER) {
             //返回banneritem对应的视图
             return new BannerViewHolder(mContext, inflater.inflate(R.layout.banner_viewpager, null));
+        } else if (viewType == CHANNEL) {
+            return new ChannelViewHolder(mContext, inflater.inflate(R.layout.channel_viewpager, null));
         }
         return null;
     }
@@ -86,12 +95,16 @@ public class HomeAdapter extends RecyclerView.Adapter {
             BannerViewHolder viewHolder = (BannerViewHolder) holder;
             //绑定数据,把数据传递给banner的V
             viewHolder.setData(data.getBanner());
+        } else if (getItemViewType(position) == CHANNEL) {
+            ChannelViewHolder channelViewHolder = (ChannelViewHolder) holder;
+
+            channelViewHolder.setData(data.getEntranceIcons());
         }
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -152,10 +165,42 @@ public class HomeAdapter extends RecyclerView.Adapter {
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-                    Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(mContext, BannerInfoActivity.class);
-                    intent.putExtra("banner",bannerBean);
+                    intent.putExtra("banner", bannerBean);
                     mContext.startActivity(intent);
+                }
+            });
+        }
+    }
+
+    class ChannelViewHolder extends RecyclerView.ViewHolder {
+        private final Context mContext;
+        @Bind(R.id.gv_channel)
+        GridView gvChannel;
+        private ChannelAdapter channelAdapter;
+        public ChannelViewHolder(Context mContext, View itemView) {
+            super(itemView);
+            this.mContext = mContext;
+            ButterKnife.bind(this,itemView);
+        }
+
+        public void setData(List<HomeBean.DataBean.EntranceIconsBean> entranceIcons) {
+            //给gridview设置适配器
+            channelAdapter = new ChannelAdapter(mContext, entranceIcons);
+            gvChannel.setAdapter(channelAdapter);
+            //设置item的点击事件
+            gvChannel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
+//                    if (position <= 8) {
+//                        Intent intent = new Intent(mContext, GoodsListActivity.class);
+//                        intent.putExtra("position", position);
+//                        mContext.startActivity(intent);
+//                    } else {
+//
+//                    }
                 }
             });
         }

@@ -20,6 +20,6 @@ public class ViewFragment extends BaseFragment {
 
     @Override
     public int getLayoutid() {
-        return R.layout.fragment_collection;
+        return R.layout.fragment_view;
     }
 }
