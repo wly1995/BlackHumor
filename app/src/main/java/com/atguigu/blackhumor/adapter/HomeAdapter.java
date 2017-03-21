@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
@@ -68,6 +69,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
     private final LayoutInflater inflater;
 
 
+
     private int currentType;
 
 
@@ -85,6 +87,8 @@ public class HomeAdapter extends RecyclerView.Adapter {
             return new BannerViewHolder(mContext, inflater.inflate(R.layout.banner_viewpager, null));
         } else if (viewType == CHANNEL) {
             return new ChannelViewHolder(mContext, inflater.inflate(R.layout.channel_viewpager, null));
+        } else if (viewType == RECOMMEND) {
+            return new LiveViewHolder(mContext, inflater.inflate(R.layout.recommend_viewpager, null));
         }
         return null;
     }
@@ -97,14 +101,16 @@ public class HomeAdapter extends RecyclerView.Adapter {
             viewHolder.setData(data.getBanner());
         } else if (getItemViewType(position) == CHANNEL) {
             ChannelViewHolder channelViewHolder = (ChannelViewHolder) holder;
-
             channelViewHolder.setData(data.getEntranceIcons());
+        } else if (getItemViewType(position) == RECOMMEND){
+            LiveViewHolder liveViewHolder = (LiveViewHolder) holder;
+            liveViewHolder.setData(data.getPartitions());
         }
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -179,10 +185,11 @@ public class HomeAdapter extends RecyclerView.Adapter {
         @Bind(R.id.gv_channel)
         GridView gvChannel;
         private ChannelAdapter channelAdapter;
+
         public ChannelViewHolder(Context mContext, View itemView) {
             super(itemView);
             this.mContext = mContext;
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void setData(List<HomeBean.DataBean.EntranceIconsBean> entranceIcons) {
@@ -203,6 +210,22 @@ public class HomeAdapter extends RecyclerView.Adapter {
 //                    }
                 }
             });
+        }
+    }
+
+    class LiveViewHolder extends RecyclerView.ViewHolder {
+        private final Context mContext;
+        @Bind(R.id.lv_live)
+        ListView lvLive;
+        public LiveViewHolder(Context mContext, View itemView) {
+            super(itemView);
+            this.mContext = mContext;
+            ButterKnife.bind(this, itemView);
+        }
+
+        public void setData(List<HomeBean.DataBean.PartitionsBean> partitions) {
+            ListViewAdapter adapter = new ListViewAdapter(mContext,partitions);
+            lvLive.setAdapter(adapter);
         }
     }
 }
