@@ -19,6 +19,15 @@ import butterknife.OnClick;
  */
 
 public class RecommendFragment extends BaseFragment {
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
+    }
     @Bind(R.id.tab)
     TabLayout tab;
     @Bind(R.id.iv_recommend)
@@ -29,13 +38,7 @@ public class RecommendFragment extends BaseFragment {
     ViewPager vpRecommend;
     String[] titles = {"综合","动态"};
     @Override
-    protected void initListener() {
-
-    }
-
-
-    @Override
-    protected void initData() {
+    protected void initData(String json) {
             RecommendPagerAdapter adapter = new RecommendPagerAdapter(getActivity());
             vpRecommend.setAdapter(adapter);
             tab.setupWithViewPager(vpRecommend);

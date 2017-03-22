@@ -14,12 +14,16 @@ public class HistoryFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(String json) {
+
     }
-
-
     @Override
     public int getLayoutid() {
         return R.layout.fragment_history;
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
     }
 }

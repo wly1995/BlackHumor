@@ -10,49 +10,37 @@ import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.adapter.HomeAdapter;
 import com.atguigu.blackhumor.bean.HomeBean;
 import com.atguigu.blackhumor.utils.Url;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import okhttp3.Call;
 
 /**
  * Created by 万里洋 on 2017/3/20.
  */
 
 public class LiveFragment extends BaseFragment {
-
     @Bind(R.id.rv_live)
     RecyclerView rvLive;
     private HomeAdapter homeAdapter;
+
     @Override
     protected void initListener() {
 
     }
 
     @Override
-    protected void initData() {
-        Log.e("TAG","initData");
-        getDataFromNet();
+    protected void initData(String json) {
+        Log.e("TAG", "initData: "+json );
+        processData(json);
     }
 
-    private void getDataFromNet() {
-        OkHttpUtils
-                .get()
-                .url(Url.LIVE_URL)
-                .id(100)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.e("TAG", "联网失败==" + e.getMessage());
-                    }
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e("TAG", "联网成功==" + response);
-                        processData(response);
-                    }
-                });
+    @Override
+    public int getLayoutid() {
+        return R.layout.fragment_live;
+    }
+
+    @Override
+    public String getChildUrl() {
+        return Url.LIVE_URL;
     }
 
     private void processData(String response) {
@@ -64,25 +52,6 @@ public class LiveFragment extends BaseFragment {
         rvLive.setAdapter(homeAdapter);
         //设置布局管理   1表示一行只有一个item
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
-        //设置滑动到哪个位置了的监听
-//        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//            @Override
-//            public int getSpanSize(int position) {
-//                if (position <= 4) {//小于3条item的时候隐藏
-//                    ibTop.setVisibility(View.GONE);
-//                } else {//大于的时候显示
-//                    ibTop.setVisibility(View.VISIBLE);
-//                }
-//                //只能返回1
-//                return 1;
-//            }
-//        });
         rvLive.setLayoutManager(manager);
-//        rvLive.setLayoutManager(new MyLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true));
-    }
-
-    @Override
-    public int getLayoutid() {
-        return R.layout.fragment_live;
     }
 }

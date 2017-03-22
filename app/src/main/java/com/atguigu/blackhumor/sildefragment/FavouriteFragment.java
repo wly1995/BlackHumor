@@ -9,17 +9,24 @@ import com.atguigu.blackhumor.fragment.BaseFragment;
 
 public class FavouriteFragment extends BaseFragment {
 
+
     @Override
     protected void initListener() {
+
     }
 
     @Override
-    protected void initData() {
-    }
+    protected void initData(String json) {
 
+    }
 
     @Override
     public int getLayoutid() {
         return R.layout.fragment_favourite;
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
     }
 }

@@ -67,7 +67,7 @@ public class MainFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(String json) {
         Log.e("TAG", "initData");
         initFragement();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -89,6 +89,12 @@ public class MainFragment extends BaseFragment {
     public int getLayoutid() {
         return R.layout.fragment_main;
     }
+
+    @Override
+    public String getChildUrl() {
+        return null;
+    }
+
     @OnClick({R.id.iv_home, R.id.tv_user, R.id.tv_login, R.id.iv_game, R.id.iv_download, R.id.iv_search})
     public void onClick(View view) {
         switch (view.getId()) {

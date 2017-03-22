@@ -8,18 +8,24 @@ import com.atguigu.blackhumor.R;
  */
 
 public class AftersomeFragment extends BaseFragment{
+
     @Override
     protected void initListener() {
 
     }
 
     @Override
-    protected void initData() {
+    protected void initData(String json) {
 
     }
 
     @Override
     public int getLayoutid() {
         return R.layout.fragment_aftersome;
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
     }
 }

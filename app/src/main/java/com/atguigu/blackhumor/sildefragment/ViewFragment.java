@@ -14,12 +14,16 @@ public class ViewFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(String json) {
+
     }
-
-
     @Override
     public int getLayoutid() {
         return R.layout.fragment_view;
+    }
+
+    @Override
+    public String getChildUrl() {
+        return null;
     }
 }
