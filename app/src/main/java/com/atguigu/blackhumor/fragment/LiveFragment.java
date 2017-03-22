@@ -9,10 +9,9 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.adapter.HomeAdapter;
 import com.atguigu.blackhumor.bean.HomeBean;
+import com.atguigu.blackhumor.utils.Url;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import okhttp3.Call;
@@ -26,8 +25,6 @@ public class LiveFragment extends BaseFragment {
     @Bind(R.id.rv_live)
     RecyclerView rvLive;
     private HomeAdapter homeAdapter;
-    private ArrayList<BaseFragment> fragments;
-
     @Override
     protected void initListener() {
 
@@ -42,9 +39,7 @@ public class LiveFragment extends BaseFragment {
     private void getDataFromNet() {
         OkHttpUtils
                 .get()
-                .url("http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=\n" +
-                        "1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=\n" +
-                        "hdpi&ts=1490013188000&sign=92541a11ed62841120e786e637b9db3b")
+                .url(Url.LIVE_URL)
                 .id(100)
                 .build()
                 .execute(new StringCallback() {
@@ -52,7 +47,6 @@ public class LiveFragment extends BaseFragment {
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "联网失败==" + e.getMessage());
                     }
-
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("TAG", "联网成功==" + response);

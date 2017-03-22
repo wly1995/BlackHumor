@@ -21,9 +21,6 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.bind(this,view);
         return view;
     }
-
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

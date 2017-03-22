@@ -86,6 +86,7 @@ public class ListViewAdapter extends BaseAdapter {
         builder1.setSpan(redSpan, 2, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         viewHolder.tvRefresh.setText(builder1);
         initAnimation(viewHolder);
+
         //设置gridview的适配器
         GridViewAdapter adapter = new GridViewAdapter(mContext,partitionsBean);
         viewHolder.gvHot.setAdapter(adapter);

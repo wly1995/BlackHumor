@@ -39,7 +39,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return lives.size();
+        return 4;
     }
 
     @Override
@@ -85,6 +85,7 @@ public class GridViewAdapter extends BaseAdapter {
         viewHolder.tvGridName.setText(livesBean.getTitle());
         viewHolder.tvGridDesc.setText(livesBean.getOwner().getName());
         viewHolder.tvGridCount.setText(livesBean.getOnline() + "");
+
         return convertView;
     }
 
