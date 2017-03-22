@@ -29,7 +29,6 @@ public class SynPagerAdapter extends RecyclerView.Adapter<SynPagerAdapter.MyView
     private final RecommendBean datas;
     private final List<RecommendBean.DataBean> data;
 
-
     public SynPagerAdapter(Context mContext, RecommendBean recommendBean) {
         this.mContext = mContext;
         this.datas = recommendBean;
@@ -45,11 +44,25 @@ public class SynPagerAdapter extends RecyclerView.Adapter<SynPagerAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.setData(data,position);
+
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+
+    //定义接口
+    public  interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
+    //创建字段有来接收接口实现类的实例
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+    //set方法
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -67,9 +80,17 @@ public class SynPagerAdapter extends RecyclerView.Adapter<SynPagerAdapter.MyView
         TextView tvGridDesc;
         @Bind(R.id.tv_grid_count)
         TextView tvGridCount;
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null){
+                        mOnItemClickListener.onItemClick(itemView,getLayoutPosition());
+                    }
+                }
+            });
         }
 
         public void setData(List<RecommendBean.DataBean> data, int position) {
@@ -94,5 +115,7 @@ public class SynPagerAdapter extends RecyclerView.Adapter<SynPagerAdapter.MyView
                 }
             });
         }
+
+
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
@@ -54,6 +55,13 @@ public class DyncPager extends LoadingPager {
         //设置布局管理   1表示一行只有一个item
         GridLayoutManager manager = new GridLayoutManager(mContext, 2);
         recyclerView.setLayoutManager(manager);
+        //设置点击事件
+        adapter.setOnItemClickListener(new SynPagerAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
