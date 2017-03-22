@@ -32,24 +32,6 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    //    @Bind(R.id.tb_main)
-//    TabLayout tbMain;
-//    @Bind(R.id.vp_main)
-//    ViewPager vpMain;
-//    @Bind(R.id.iv_home)
-//    ImageView ivHome;
-//    @Bind(R.id.tv_user)
-//    TextView tvUser;
-//    @Bind(R.id.tv_login)
-//    TextView tvLogin;
-//    @Bind(R.id.iv_game)
-//    ImageView ivGame;
-//    @Bind(R.id.iv_download)
-//    ImageView ivDownload;
-//    @Bind(R.id.iv_search)
-//    ImageView ivSearch;
-//    @Bind(R.id.content_main)
-//    LinearLayout contentMain;
     @Bind(R.id.nav_view)
     NavigationView navView;
     @Bind(R.id.drawer_layout)
@@ -136,21 +118,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
     private long time = 0;
-
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -164,7 +139,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             }
         }
     }
-
     /**
      * 这个是对侧滑中的选择时回调的方法
      *
@@ -203,7 +177,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
-
         //根据对应的位置切换fragment,先获取当前的fragment
         Fragment currentFragment = fragments.get(position);
         switchFragment(currentFragment);

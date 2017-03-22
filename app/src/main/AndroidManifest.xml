@@ -3,7 +3,7 @@
     package="com.atguigu.blackhumor">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"

@@ -2,13 +2,15 @@ package com.atguigu.blackhumor.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.pager.DyncPager;
+import com.atguigu.blackhumor.pager.SynPager;
+import com.atguigu.blackhumor.view.LoadingPager;
 
-import butterknife.Bind;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 万里洋 on 2017/3/22.
@@ -16,30 +18,31 @@ import butterknife.Bind;
 
 public class RecommendPagerAdapter extends PagerAdapter {
     private final Context mContext;
-    int[] views = {R.layout.fragment_syn, R.layout.fragment_dynam};
-    @Bind(R.id.rv_syn)
-    RecyclerView rvSyn;
+    private List<LoadingPager> basepagers ;
+    private LoadingPager loadingPager;
 
     public RecommendPagerAdapter(Context mContext) {
         this.mContext = mContext;
+        basepagers = new ArrayList<>();
+        basepagers.add(new SynPager(mContext));
+        basepagers.add(new DyncPager(mContext));
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View inflate = View.inflate(mContext, views[position], null);
-//        rvSyn.setAdapter(adapter);
-        container.addView(inflate);
-        return inflate;
+        loadingPager = basepagers.get(position);
+        container.addView(loadingPager);
+        return loadingPager;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(View.inflate(mContext, views[position], null));
+        container.removeView(loadingPager);
     }
 
     @Override
     public int getCount() {
-        return views.length;
+        return basepagers.size();
     }
 
     @Override
