@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_empty_page"/>
+        android:src="@drawable/ic_movie_pay_order_error"/>
 
     <TextView
         android:layout_width="wrap_content"
