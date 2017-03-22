@@ -83,7 +83,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
 
-                android:src="@drawable/ic_refresh_pink"/>
+                android:src="@drawable/ic_category_more_refresh"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

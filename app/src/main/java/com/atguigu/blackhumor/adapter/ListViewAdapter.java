@@ -7,11 +7,16 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.bean.HomeBean;
@@ -30,6 +35,8 @@ import butterknife.ButterKnife;
 public class ListViewAdapter extends BaseAdapter {
     private final Context mContext;
     private final List<HomeBean.DataBean.PartitionsBean> data;
+    private RotateAnimation rotate = new RotateAnimation(0,360,RotateAnimation.RELATIVE_TO_SELF,0.5f,RotateAnimation.RELATIVE_TO_SELF,0.5f);
+    private AlphaAnimation alpha = new AlphaAnimation(0,1);
 
     public ListViewAdapter(Context mContext, List<HomeBean.DataBean.PartitionsBean> partitions) {
         this.mContext = mContext;
@@ -68,22 +75,47 @@ public class ListViewAdapter extends BaseAdapter {
                 .crossFade()
                 .into(viewHolder.ivLiveHead);
         viewHolder.tvLiveHead.setText(partitionsBean.getPartition().getName());
-        GridViewAdapter adapter = new GridViewAdapter(mContext,partitionsBean);
-//        viewHolder.tvLiverHead.setText("当前有"+Html.fromHtml(""+partitionsBean.getPartition().getCount())+"个直播");
-        viewHolder.gvHot.setAdapter(adapter);
-
+        //设置直播的数量
         SpannableStringBuilder builder = new SpannableStringBuilder("当前有"+partitionsBean.getPartition().getCount()+"个直播");
-
         //ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
         ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.parseColor("#fb7299"));
         builder.setSpan(redSpan, 3, (partitionsBean.getPartition().getCount()+"").length()+3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         viewHolder.tvLiverHead.setText(builder);
-
+        //设置刷新的数据条数
         SpannableStringBuilder builder1 = new SpannableStringBuilder("还有10条数据，点击刷新");
         builder1.setSpan(redSpan, 2, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         viewHolder.tvRefresh.setText(builder1);
+        initAnimation(viewHolder);
+        //设置gridview的适配器
+        GridViewAdapter adapter = new GridViewAdapter(mContext,partitionsBean);
+        viewHolder.gvHot.setAdapter(adapter);
         return convertView;
+    }
+
+    private void initAnimation(ViewHolder viewHolder) {
+        LinearInterpolator linearInterpolator = new LinearInterpolator();
+        //旋转动画
+        rotate.setDuration(2000);
+        rotate.setInterpolator(linearInterpolator);
+        //渐变动画
+        alpha.setDuration(2000);
+        alpha.setInterpolator(linearInterpolator);
+
+        final ViewHolder finalViewHolder = viewHolder;
+        viewHolder.llRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(mContext, "llRefresh", Toast.LENGTH_SHORT).show();
+                finalViewHolder.ivRefresh.startAnimation(rotate);
+                finalViewHolder.tvRefresh.startAnimation(alpha);
+            }
+        });
+        viewHolder.gvHot.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     static class ViewHolder {

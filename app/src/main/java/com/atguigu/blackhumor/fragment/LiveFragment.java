@@ -84,6 +84,7 @@ public class LiveFragment extends BaseFragment {
 //            }
 //        });
         rvLive.setLayoutManager(manager);
+//        rvLive.setLayoutManager(new MyLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true));
     }
 
     @Override
