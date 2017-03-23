@@ -3,7 +3,6 @@ package com.atguigu.blackhumor.pager;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,7 +42,7 @@ public class DyncPager extends LoadingPager {
     }
 
     private void initData(String json) {
-        Log.e("TAG", "请求成功哈哈: ");
+//        Log.e("TAG", "请求成功哈哈: ");
         processData(json);
     }
 

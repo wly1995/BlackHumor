@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.adapter.ViewPagerAdapter;
@@ -74,6 +75,7 @@ public class MainFragment extends BaseFragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(fragmentManager, fragments);
         vpMain.setAdapter(adapter);
         tbMain.setupWithViewPager(vpMain);
+        vpMain.setCurrentItem(1);
     }
 
     private void initFragement() {
@@ -101,16 +103,21 @@ public class MainFragment extends BaseFragment {
             case R.id.iv_home:
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.openDrawer(GravityCompat.START);
-                break;
+               break;
             case R.id.tv_user:
+                Toast.makeText(getActivity(), "用户头像", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_login:
+                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_game:
+                Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_download:
+                Toast.makeText(getActivity(), "下载", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_search:
+                Toast.makeText(getActivity(), "查找", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
