@@ -46,7 +46,7 @@ public class AftersomeFragment extends BaseFragment {
     private void processData(String json) {
         FollowBean followBean = JSON.parseObject(json, FollowBean.class);
         //解析数据成功后开始设置ReclcyView的适配器
-        adapter = new FollowRecycleAdapter(getActivity(),followBean.getResult());
+        adapter = new FollowRecycleAdapter(getActivity(), followBean.getResult());
         //设置适配器器
         rvAftersome.setAdapter(adapter);
         //设置布局管理   1表示一行只有一个item

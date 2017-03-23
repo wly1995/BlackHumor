@@ -15,6 +15,7 @@ import com.github.hymanme.tagflowlayout.OnTagClickListener;
 import com.github.hymanme.tagflowlayout.TagAdapter;
 import com.github.hymanme.tagflowlayout.TagFlowLayout;
 import com.github.hymanme.tagflowlayout.tags.ColorfulTagView;
+import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
 
 import java.util.List;
 
@@ -103,6 +104,17 @@ public class DiscoveryFragment extends BaseFragment {
         });
 
     }
+
+    class MyTagAdapter extends TagAdapter<FindBean.DataBean.ListBean> {
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            //定制tag的样式，包括背景颜色，点击时背景颜色，背景形状等
+            DefaultTagView textView = new ColorfulTagView(getActivity());
+            textView.setText(((FindBean.DataBean.ListBean) getItem(position)).getKeyword());
+            return textView;
+        }
+    }
     @OnClick({R.id.tv_search, R.id.ll_like, R.id.ll_center, R.id.ll_activity, R.id.ll_balckhome,
             R.id.ll_rank, R.id.ll_all, R.id.ll_game, R.id.ll_shop})
     public void onClick(View view) {
@@ -134,17 +146,6 @@ public class DiscoveryFragment extends BaseFragment {
             case R.id.ll_shop:
                 Toast.makeText(getActivity(), "周边商城", Toast.LENGTH_SHORT).show();
                 break;
-        }
-    }
-
-    class MyTagAdapter extends TagAdapter<FindBean.DataBean.ListBean> {
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            //定制tag的样式，包括背景颜色，点击时背景颜色，背景形状等
-            ColorfulTagView textView = new ColorfulTagView(getActivity());
-            textView.setText(((FindBean.DataBean.ListBean) getItem(position)).getKeyword());
-            return textView;
         }
     }
 }

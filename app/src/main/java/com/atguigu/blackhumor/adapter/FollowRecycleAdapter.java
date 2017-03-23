@@ -30,8 +30,8 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
     private final FollowBean.ResultBean datas;
 
     private final LayoutInflater inflater;
+    private static final int HEAD = 1;
     private static final int BANNER = 0;
-    private static final int LIST = 1;
     private static final int DEVIDE = 2;
 
     private int currentType = BANNER;
@@ -45,10 +45,10 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == BANNER) {
+        if (position == HEAD){
+            currentType = HEAD;
+        } else if (position == BANNER) {
             currentType = BANNER;
-        } else if (position == LIST) {
-            currentType = LIST;
         } else if (position == DEVIDE) {
             currentType = DEVIDE;
         } else if (position == NewShow) {
@@ -59,11 +59,11 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == HEAD){
+            return new HeadViewHolder(mContext,inflater.inflate(R.layout.rv_head,null));
+        }
         if (viewType == BANNER) {
             return new BannerViewHolder(mContext, inflater.inflate(R.layout.banner_viewpager, null));
-        }
-        if (viewType == LIST) {
-            return new MyListViewHolder(mContext, inflater.inflate(R.layout.list_item, null));
         }
         if (viewType == DEVIDE) {
             return new DeVideViewHolder(mContext, inflater.inflate(R.layout.devide_item, null));
@@ -76,12 +76,12 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == HEAD){
+            HeadViewHolder headViewHolder = (HeadViewHolder) holder;
+        }
         if (getItemViewType(position) == BANNER) {
             BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
             bannerViewHolder.setData(datas.getAd().getHead());
-        }
-        if (getItemViewType(position) == LIST) {
-            MyListViewHolder listViewHolder = (MyListViewHolder) holder;
         }
         if (getItemViewType(position) == DEVIDE) {
             DeVideViewHolder deVideViewHolder = (DeVideViewHolder) holder;
@@ -95,6 +95,13 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return 4;
+    }
+
+    class HeadViewHolder extends RecyclerView.ViewHolder{
+
+        public HeadViewHolder(Context mContext, View itemView) {
+            super(itemView);
+        }
     }
 
     class BannerViewHolder extends RecyclerView.ViewHolder {
@@ -130,20 +137,6 @@ public class FollowRecycleAdapter extends RecyclerView.Adapter {
                     Toast.makeText(context, "position" + position, Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-
-    }
-
-    class MyListViewHolder extends RecyclerView.ViewHolder {
-        TextView layoutChaseBangumi;
-        TextView layoutBangumiSchedule;
-        TextView layoutBangumiIndex;
-
-        MyListViewHolder(Context mcontext, View view) {
-            super(view);
-            layoutChaseBangumi = (TextView) view.findViewById(R.id.layout_chase_bangumi);
-            layoutBangumiSchedule = (TextView) view.findViewById(R.id.layout_bangumi_schedule);
-            layoutBangumiIndex = (TextView) view.findViewById(R.id.layout_bangumi_index);
         }
 
     }
