@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.bean.HomeBean;
 import com.atguigu.blackhumor.bean.PartBean;
 
 import butterknife.Bind;
@@ -22,7 +21,7 @@ import butterknife.OnClick;
  * Created by 万里洋 on 2017/3/21.
  */
 
-public class BannerInfoActivity extends BaseActivity {
+public class BodyInfoActivity extends BaseActivity {
     @Bind(R.id.ib_back)
     ImageButton ibBack;
     @Bind(R.id.ib_more)
@@ -33,7 +32,6 @@ public class BannerInfoActivity extends BaseActivity {
     ProgressBar progressbar;
     @Bind(R.id.tv_title)
     TextView tvTitle;
-    private HomeBean.DataBean.BannerBean banner;
     private PartBean.DataBean.BodyBean body;
 
     @Override
@@ -42,7 +40,7 @@ public class BannerInfoActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        banner = (HomeBean.DataBean.BannerBean) getIntent().getSerializableExtra("banner");
+        body = (PartBean.DataBean.BodyBean) getIntent().getSerializableExtra("body");
         WebSettings webSettings = webview.getSettings();
         //启用 WebView 中的 Javascript 支持
         webSettings.setJavaScriptEnabled(true);
@@ -86,8 +84,8 @@ public class BannerInfoActivity extends BaseActivity {
             }
         });
 
-        webview.loadUrl(banner.getLink());
-        tvTitle.setText(banner.getRemark());
+        webview.loadUrl(body.getUri());
+        tvTitle.setText(body.getTitle());
     }
 
     @Override
@@ -123,5 +121,4 @@ public class BannerInfoActivity extends BaseActivity {
             super.onBackPressed();
         }
     }
-
 }

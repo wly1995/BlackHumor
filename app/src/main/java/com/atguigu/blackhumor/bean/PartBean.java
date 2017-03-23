@@ -2,6 +2,7 @@ package com.atguigu.blackhumor.bean;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -247,7 +248,7 @@ public class PartBean {
             }
         }
 
-        public static class BodyBean {
+        public static class BodyBean implements Serializable {
             /**
              * title : 钢铁侠险些丧命，地球最强登场《浩克世界大战》下
              * cover : http://i0.hdslb.com/bfs/archive/5d639c373ac7f72e8c5904729271ee6b3ff57181.jpg

@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.BodyInfoActivity;
 import com.atguigu.blackhumor.bean.PartBean;
 import com.atguigu.blackhumor.view.NoScrollGridView;
 import com.bumptech.glide.Glide;
@@ -284,6 +286,7 @@ public class PartAdapter extends RecyclerView.Adapter {
         TextView tvLiverHead;
         @Bind(R.id.iv_ad)
         ImageView ivAd;
+        private PartBean.DataBean.BodyBean bodybean;
 
         public AdViewHolder(Context mContext, View itemView) {
             super(itemView);
@@ -294,13 +297,13 @@ public class PartAdapter extends RecyclerView.Adapter {
             ivLiveHead.setImageResource(pic[position]);
             tvLiveHead.setText("话题");
             tvLiverHead.setText("进去看看");
+            bodybean = data.get(position).getBody().get(0);
             //用Gilde请求图片
             Glide.with(mContext)
-                    .load(data.get(position).getBody().get(0).getCover())
+                    .load(bodybean.getCover())
                     .crossFade()
                     .into(ivAd);
         }
-
         @OnClick({R.id.tv_liver_head, R.id.iv_ad})
         public void onClick(View view) {
             switch (view.getId()) {
@@ -308,7 +311,10 @@ public class PartAdapter extends RecyclerView.Adapter {
                     Toast.makeText(mContext, "进去看看", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.iv_ad:
-                    Toast.makeText(mContext, "广告", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "广告", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, BodyInfoActivity.class);
+                    intent.putExtra("body", bodybean);
+                    mContext.startActivity(intent);
                     break;
             }
         }
@@ -317,29 +323,4 @@ public class PartAdapter extends RecyclerView.Adapter {
     private RotateAnimation rotate = new RotateAnimation(0,360,RotateAnimation.RELATIVE_TO_SELF,0.5f,RotateAnimation.RELATIVE_TO_SELF,0.5f);
     private AlphaAnimation alpha = new AlphaAnimation(0,1);
     private LinearInterpolator linearInterpolator = new LinearInterpolator();
-//    private void initAnimation(ListViewAdapter.ViewHolder viewHolder) {
-//        LinearInterpolator linearInterpolator = new LinearInterpolator();
-//        //旋转动画
-//        rotate.setDuration(2000);
-//        rotate.setInterpolator(linearInterpolator);
-//        //渐变动画
-//        alpha.setDuration(2000);
-//        alpha.setInterpolator(linearInterpolator);
-//
-//        final ListViewAdapter.ViewHolder finalViewHolder = viewHolder;
-//        viewHolder.llRefresh.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Toast.makeText(mContext, "llRefresh", Toast.LENGTH_SHORT).show();
-//                finalViewHolder.ivRefresh.startAnimation(rotate);
-//                finalViewHolder.tvRefresh.startAnimation(alpha);
-//            }
-//        });
-//        viewHolder.gvHot.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 }
