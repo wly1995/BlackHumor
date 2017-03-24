@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.fragment;
 
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -20,17 +21,25 @@ public class AftersomeFragment extends BaseFragment {
 
     @Bind(R.id.rv_aftersome)
     RecyclerView rvAftersome;
+    @Bind(R.id.after_refresh)
+    SwipeRefreshLayout afterRefresh;
     private FollowRecycleAdapter adapter;
 
     @Override
     protected void initListener() {
-
+        afterRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getLoadingPager().loadData();
+            }
+        });
     }
 
     @Override
     protected void initData(String json) {
 //        Log.e("TAG","请求成功"+json);
         processData(json);
+        afterRefresh.setRefreshing(false);
     }
 
     @Override

@@ -40,7 +40,7 @@ public abstract class LoadingPager extends FrameLayout {
     }
 
     /**
-     *  添加布局
+     * 添加布局
      */
     private void init() {
         //设置全屏属性
@@ -54,11 +54,18 @@ public abstract class LoadingPager extends FrameLayout {
         if (errorView == null) {
             errorView = View.inflate(context, R.layout.page_error, null);
             this.addView(errorView, params);
+            errorView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadData();
+                }
+            });
         }
         if (emptyView == null) {
             emptyView = View.inflate(context, R.layout.page_empty, null);
             this.addView(emptyView, params);
         }
+
 
         //展示布局
         showSafeView();
@@ -89,7 +96,7 @@ public abstract class LoadingPager extends FrameLayout {
         emptyView.setVisibility(
                 current_state == STATE_EMPTY ? View.VISIBLE : View.INVISIBLE);
 
-        if (sucessView == null){
+        if (sucessView == null) {
             sucessView = View.inflate(context, getViewId(), null);
             this.addView(sucessView, params);
         }
@@ -98,16 +105,17 @@ public abstract class LoadingPager extends FrameLayout {
                 current_state == STATE_SUCCESS ? View.VISIBLE : View.INVISIBLE);
     }
 
+
+
     /*
     * 根据不同的网络状态加载相应的页面
     *
     * */
-
-    public void loadData(){
+    public void loadData() {
         //加载网络
         String url = getUrl();
         //如果url为空表示不进行网络请求
-        if (TextUtils.isEmpty(url)){
+        if (TextUtils.isEmpty(url)) {
             resultState = ResultState.SUCCESS;
             loadImage();
             return;
@@ -122,11 +130,11 @@ public abstract class LoadingPager extends FrameLayout {
 
             @Override
             public void onResponse(String response, int id) {
-                if (TextUtils.isEmpty(response)){
+                if (TextUtils.isEmpty(response)) {
                     //current_state = STATE_EMPTY;
                     resultState = ResultState.EMPTY;
                     resultState.setJson("");
-                }else{
+                } else {
                     resultState = ResultState.SUCCESS;
                     resultState.setJson(response);
                 }
@@ -136,7 +144,7 @@ public abstract class LoadingPager extends FrameLayout {
     }
 
     private void loadImage() {
-        switch (resultState){
+        switch (resultState) {
             case ERROR:
                 current_state = STATE_ERROR; //根据枚举值来赋值相应的状态
                 break;
@@ -149,27 +157,30 @@ public abstract class LoadingPager extends FrameLayout {
         }
 
         showSafeView();
-        if (current_state == STATE_SUCCESS){
+        if (current_state == STATE_SUCCESS) {
             //把数据传过去
-            onSuccess(resultState,sucessView);
+            onSuccess(resultState, sucessView);
         }
     }
+
     protected abstract void onSuccess(ResultState resultState, View sucessView);
 
-    public enum ResultState{
+    public enum ResultState {
         //相当于是三个ResultState对象
-        ERROR(2),SUCCESS(3),EMPTY(4);
+        ERROR(2), SUCCESS(3), EMPTY(4);
         private int state;
-        ResultState(int state){
+
+        ResultState(int state) {
             this.state = state;
         }
 
         private String json;
-        public void setJson(String json){
+
+        public void setJson(String json) {
             this.json = json;
         }
 
-        public String getJson(){
+        public String getJson() {
             return json;
         }
 

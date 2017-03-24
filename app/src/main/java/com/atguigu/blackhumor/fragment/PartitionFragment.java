@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.fragment;
 
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -20,15 +21,23 @@ public class PartitionFragment extends BaseFragment {
 
     @Bind(R.id.rv_part)
     RecyclerView rvPart;
+    @Bind(R.id.part_refresh)
+    SwipeRefreshLayout partRefresh;
 
     @Override
     protected void initListener() {
-
+        partRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getLoadingPager().loadData();
+            }
+        });
     }
 
     @Override
     protected void initData(String json) {
         processData(json);
+        partRefresh.setRefreshing(false);
     }
 
     @Override
@@ -40,6 +49,7 @@ public class PartitionFragment extends BaseFragment {
     public String getChildUrl() {
         return Url.PART_URL;
     }
+
     private void processData(String json) {
         PartBean partBean = JSON.parseObject(json, PartBean.class);
 
@@ -52,5 +62,4 @@ public class PartitionFragment extends BaseFragment {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
         rvPart.setLayoutManager(manager);
     }
-
 }
