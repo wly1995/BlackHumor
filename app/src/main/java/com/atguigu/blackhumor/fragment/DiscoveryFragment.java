@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.fragment;
 
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.OriginalActivity;
+import com.atguigu.blackhumor.activity.TopicActivity;
 import com.atguigu.blackhumor.bean.FindBean;
 import com.atguigu.blackhumor.utils.Url;
 import com.github.hymanme.tagflowlayout.OnTagClickListener;
@@ -126,16 +129,17 @@ public class DiscoveryFragment extends BaseFragment {
                 Toast.makeText(getActivity(), "兴趣圈", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_center:
-                Toast.makeText(getActivity(), "话题中心", Toast.LENGTH_SHORT).show();
+                getActivity().startActivity(new Intent(getActivity(),TopicActivity.class));
                 break;
             case R.id.ll_activity:
-                Toast.makeText(getActivity(), "活动中心", Toast.LENGTH_SHORT).show();
+                getActivity().startActivity(new Intent(getActivity(),TopicActivity.class));
                 break;
             case R.id.ll_balckhome:
                 Toast.makeText(getActivity(), "小黑屋", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_rank:
-                Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();
+                getActivity().startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.ll_all:
                 Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();

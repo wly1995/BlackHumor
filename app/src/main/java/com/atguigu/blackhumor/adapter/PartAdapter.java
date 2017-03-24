@@ -47,10 +47,13 @@ public class PartAdapter extends RecyclerView.Adapter {
     private static final int GRID_BANNER = 0;
     private static final int GRID = 1;
     private static final int AD = 2;
+    private static final int TITLE = 3;
+    private static final int ACTIVITY = 4;
 
-    private int currentType = GRID_BANNER;
+
+    private int currentType;
     int[] pic = {R.drawable.ic_category_t1, R.drawable.ic_head_live, R.drawable.ic_category_t3,
-            R.drawable.ic_category_t129, R.drawable.ic_header_topic, R.drawable.ic_category_t4,
+            R.drawable.ic_header_topic, R.drawable.ic_category_t129, R.drawable.ic_category_t4,
             R.drawable.ic_category_t119, R.drawable.ic_header_topic, R.drawable.ic_category_t160,
             R.drawable.ic_header_topic, R.drawable.ic_category_t36, R.drawable.ic_head_live, R.drawable.ic_header_topic,
             R.drawable.ic_category_t155, R.drawable.ic_category_t165, R.drawable.ic_category_t5,
@@ -73,6 +76,12 @@ public class PartAdapter extends RecyclerView.Adapter {
         if (viewType == AD) {
             return new AdViewHolder(mContext, inflater.inflate(R.layout.item_ad, null));
         }
+        if (viewType == TITLE) {
+            return new TitleViewHolder(mContext, inflater.inflate(R.layout.item_title, null));
+        }
+        if (viewType == ACTIVITY) {
+            return new ActivityViewHolder(mContext, inflater.inflate(R.layout.banner_viewpager, null));
+        }
         return null;
     }
 
@@ -90,27 +99,35 @@ public class PartAdapter extends RecyclerView.Adapter {
             AdViewHolder adViewHolder = (AdViewHolder) holder;
             adViewHolder.setData(data, position);
         }
+        if (getItemViewType(position) == TITLE) {
+            TitleViewHolder titleViewHolder = (TitleViewHolder) holder;
+        }
+        if (getItemViewType(position) == ACTIVITY) {
+            ActivityViewHolder activityViewHolder = (ActivityViewHolder) holder;
+            activityViewHolder.setData(data,position);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return data.size() + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == 13) {
+        if (position == 0) {
+            currentType = TITLE;
+        } else if (data.get(position - 1).getBanner() != null && "region".equals(data.get(position-1).getType())) {
             currentType = GRID_BANNER;
-        } else if (position == 1 || position == 2 || position == 3 || position == 5 || position == 6
-                || position == 8 || position == 10 || position == 11 || position == 14 || position == 15
-                || position == 16 || position == 18) {
+        } else if (data.get(position - 1).getBanner() == null && "region".equals(data.get(position-1).getType())) {
             currentType = GRID;
-        } else if (position == 17 || position == 12 || position == 9 || position == 7 || position == 4) {
+        } else if ("topic".equals(data.get(position-1).getType())) {
             currentType = AD;
+        } else if ("activity".equals(data.get(position-1).getType())) {
+            currentType = ACTIVITY;
         }
         return currentType;
     }
-
 
 
     class GridBannerViewHolder extends RecyclerView.ViewHolder {
@@ -139,10 +156,10 @@ public class PartAdapter extends RecyclerView.Adapter {
         }
 
         public void setData(List<PartBean.DataBean> data, int position) {
-            PartGridAdapter adapter = new PartGridAdapter(mContext, data.get(position));
+            PartGridAdapter adapter = new PartGridAdapter(mContext, data.get(position - 1));
             gvHot.setAdapter(adapter);
-            ivLiveHead.setImageResource(pic[position]);
-            tvLiveHead.setText(data.get(position).getTitle());
+            ivLiveHead.setImageResource(pic[position - 1]);
+            tvLiveHead.setText(data.get(position - 1).getTitle());
             tvLiverHead.setText("进去看看");
 
             SpannableStringBuilder builder = new SpannableStringBuilder("还有10条数据，点击刷新");
@@ -151,7 +168,7 @@ public class PartAdapter extends RecyclerView.Adapter {
             tvRefresh.setText(builder);
 
 
-            PartBean.DataBean.BannerBean banner = data.get(position).getBanner();
+            PartBean.DataBean.BannerBean banner = data.get(position - 1).getBanner();
             List<PartBean.DataBean.BannerBean.BottomBean> bottom = banner.getBottom();
             List<String> images = new ArrayList<>();
             for (int i = 0; i < bottom.size(); i++) {
@@ -177,10 +194,11 @@ public class PartAdapter extends RecyclerView.Adapter {
             banner1.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-                    Toast.makeText(mContext, "podition=="+position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "podition==" + position, Toast.LENGTH_SHORT).show();
                 }
             });
         }
+
         //设置点击事件
         @OnClick({R.id.tv_liver_head, R.id.btn_more, R.id.ll_refresh})
         public void onClick(View view) {
@@ -235,15 +253,15 @@ public class PartAdapter extends RecyclerView.Adapter {
 
         public void setData(List<PartBean.DataBean> data, int position) {
 
-            PartGridAdapter adapter = new PartGridAdapter(mContext, data.get(position));
+            PartGridAdapter adapter = new PartGridAdapter(mContext, data.get(position - 1));
             gvHot.setAdapter(adapter);
             //用Gilde请求图片
 //            Glide.with(mContext)
 //                    .load(livesBean.getCover().getSrc())
 //                    .crossFade()
 //                    .into(viewHolder.ivGrid);
-            ivLiveHead.setImageResource(pic[position]);
-            tvLiveHead.setText(data.get(position).getTitle());
+            ivLiveHead.setImageResource(pic[position - 1]);
+            tvLiveHead.setText(data.get(position - 1).getTitle());
             tvLiverHead.setText("进去看看");
 
             SpannableStringBuilder builder = new SpannableStringBuilder("还有10条数据，点击刷新");
@@ -294,16 +312,17 @@ public class PartAdapter extends RecyclerView.Adapter {
         }
 
         public void setData(List<PartBean.DataBean> data, int position) {
-            ivLiveHead.setImageResource(pic[position]);
+            ivLiveHead.setImageResource(pic[position - 1]);
             tvLiveHead.setText("话题");
             tvLiverHead.setText("进去看看");
-            bodybean = data.get(position).getBody().get(0);
+            bodybean = data.get(position - 1).getBody().get(0);
             //用Gilde请求图片
             Glide.with(mContext)
                     .load(bodybean.getCover())
                     .crossFade()
                     .into(ivAd);
         }
+
         @OnClick({R.id.tv_liver_head, R.id.iv_ad})
         public void onClick(View view) {
             switch (view.getId()) {
@@ -320,7 +339,59 @@ public class PartAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private RotateAnimation rotate = new RotateAnimation(0,360,RotateAnimation.RELATIVE_TO_SELF,0.5f,RotateAnimation.RELATIVE_TO_SELF,0.5f);
-    private AlphaAnimation alpha = new AlphaAnimation(0,1);
+    class TitleViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.grid_title)
+        NoScrollGridView gridTitle;
+
+        public TitleViewHolder(Context mContext, View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            TitleGridAdapter adapter = new TitleGridAdapter(mContext);
+            gridTitle.setAdapter(adapter);
+        }
+    }
+
+    class ActivityViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.banner)
+        Banner banner1;
+        public ActivityViewHolder(Context mContext, View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+
+        public void setData(List<PartBean.DataBean> data, int position) {
+            List<PartBean.DataBean.BodyBean> body = data.get(position-1).getBody();
+            List<String> images = new ArrayList<>();
+            for (int i = 0; i < body.size(); i++) {
+                images.add(body.get(i).getCover());
+            }
+            //简单使用
+            banner1.setImages(images)
+                    .setImageLoader(new ImageLoader() {
+                        @Override
+                        public void displayImage(Context context, Object path, ImageView imageView) {
+                            //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
+                            Glide.with(context)
+                                    .load(path)
+                                    .crossFade()
+                                    .into(imageView);
+                        }
+                    })
+                    .start();
+
+            //设置样式
+            banner1.setBannerAnimation(CubeInTransformer.class);
+            //banner点击事件
+            banner1.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    Toast.makeText(mContext, "podition==" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private RotateAnimation rotate = new RotateAnimation(0, 360, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+    private AlphaAnimation alpha = new AlphaAnimation(0, 1);
     private LinearInterpolator linearInterpolator = new LinearInterpolator();
 }

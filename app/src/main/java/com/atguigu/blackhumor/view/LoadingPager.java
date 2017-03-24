@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.utils.UiUtils;
@@ -126,6 +127,7 @@ public abstract class LoadingPager extends FrameLayout {
                 resultState = ResultState.ERROR;
                 resultState.setJson(e.getMessage());
                 loadImage();
+                Toast.makeText(context, "检查网络是否连接正常", Toast.LENGTH_SHORT).show();
             }
 
             @Override
