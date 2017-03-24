@@ -142,7 +142,8 @@ public class DiscoveryFragment extends BaseFragment {
                 getActivity().startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.ll_all:
-                Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();
+                getActivity().startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.ll_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();

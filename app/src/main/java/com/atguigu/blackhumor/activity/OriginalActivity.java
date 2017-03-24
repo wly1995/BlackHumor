@@ -10,6 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.adapter.RankAdapter;
+import com.atguigu.blackhumor.fragment.BaseFragment;
+import com.atguigu.blackhumor.fragment.OriginFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,6 +42,10 @@ public class OriginalActivity extends BaseActivity {
     RelativeLayout rlUser;
     @Bind(R.id.content_main)
     LinearLayout contentMain;
+
+    String[] titles = {"原创", "全站", "番剧"};
+    private List<BaseFragment> fragments;
+
     @Override
     protected void initListener() {
 
@@ -43,7 +53,17 @@ public class OriginalActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        initFragment();
+        RankAdapter adapter = new RankAdapter(getSupportFragmentManager(),fragments);
+        vpMain.setAdapter(adapter);
+        tbMain.setupWithViewPager(vpMain);
+    }
 
+    private void initFragment() {
+        fragments = new ArrayList<>();
+        fragments.add(new OriginFragment());
+        fragments.add(new OriginFragment());
+        fragments.add(new OriginFragment());
     }
 
     @Override
