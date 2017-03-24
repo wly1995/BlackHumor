@@ -66,6 +66,10 @@ public abstract class BaseFragment extends Fragment {
     //每一个fragment返回的地址
     public abstract String getChildUrl();
 
+    public LoadingPager getLoadingPager(){
+        return loadingPager;
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

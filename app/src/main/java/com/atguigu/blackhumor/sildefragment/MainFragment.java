@@ -97,6 +97,8 @@ public class MainFragment extends BaseFragment {
         return null;
     }
 
+
+
     @OnClick({R.id.iv_home, R.id.tv_user, R.id.tv_login, R.id.iv_game, R.id.iv_download, R.id.iv_search})
     public void onClick(View view) {
         switch (view.getId()) {

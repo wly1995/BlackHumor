@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.fragment;
 
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.adapter.HomeAdapter;
 import com.atguigu.blackhumor.bean.HomeBean;
 import com.atguigu.blackhumor.utils.Url;
+import com.atguigu.blackhumor.view.LoadingPager;
 
 import butterknife.Bind;
 
@@ -20,17 +22,33 @@ import butterknife.Bind;
 public class LiveFragment extends BaseFragment {
     @Bind(R.id.rv_live)
     RecyclerView rvLive;
+    @Bind(R.id.live_refresh)
+    SwipeRefreshLayout liveRefresh;
+    private String url;
     private HomeAdapter homeAdapter;
+
 
     @Override
     protected void initListener() {
+        liveRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getLoadingPager().loadData();
+            }
+        });
+    }
 
+    @Override
+    public LoadingPager getLoadingPager() {
+        return super.getLoadingPager();
     }
 
     @Override
     protected void initData(String json) {
-        Log.e("TAG", "initData: "+json );
+        this.url = json;
+        Log.e("TAG", "initData: " + json);
         processData(json);
+        liveRefresh.setRefreshing(false);
     }
 
     @Override

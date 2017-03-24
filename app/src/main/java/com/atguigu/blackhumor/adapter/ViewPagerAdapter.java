@@ -3,6 +3,7 @@ package com.atguigu.blackhumor.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
 import com.atguigu.blackhumor.fragment.BaseFragment;
 
@@ -34,5 +35,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return titles[position];
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
     }
 }
