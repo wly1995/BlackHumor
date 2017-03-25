@@ -158,7 +158,7 @@ public class PartAdapter extends RecyclerView.Adapter {
         public void setData(List<PartBean.DataBean> data, int position) {
             PartGridAdapter adapter = new PartGridAdapter(mContext, data.get(position - 1));
             gvHot.setAdapter(adapter);
-            ivLiveHead.setImageResource(pic[position - 1]);
+//            ivLiveHead.setImageResource(pic[position - 1]);
             tvLiveHead.setText(data.get(position - 1).getTitle());
             tvLiverHead.setText("进去看看");
 
@@ -260,7 +260,7 @@ public class PartAdapter extends RecyclerView.Adapter {
 //                    .load(livesBean.getCover().getSrc())
 //                    .crossFade()
 //                    .into(viewHolder.ivGrid);
-            ivLiveHead.setImageResource(pic[position - 1]);
+//            ivLiveHead.setImageResource(pic[position+1]);
             tvLiveHead.setText(data.get(position - 1).getTitle());
             tvLiverHead.setText("进去看看");
 

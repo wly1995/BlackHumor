@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -16,9 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.DanmkuVideoActivity;
 import com.atguigu.blackhumor.bean.HomeBean;
 import com.atguigu.blackhumor.view.NoScrollGridView;
 import com.bumptech.glide.Glide;
@@ -114,7 +115,9 @@ public class ListViewAdapter extends BaseAdapter {
         viewHolder.gvHot.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext,DanmkuVideoActivity.class);
+                mContext.startActivity(intent);
             }
         });
     }

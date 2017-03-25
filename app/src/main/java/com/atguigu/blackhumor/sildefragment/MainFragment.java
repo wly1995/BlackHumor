@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,8 +47,8 @@ public class MainFragment extends BaseFragment {
     ImageView ivDownload;
     @Bind(R.id.iv_search)
     ImageView ivSearch;
-    @Bind(R.id.content_main)
-    LinearLayout contentMain;
+//    @Bind(R.id.content_main)
+//    LinearLayout contentMain;
     private ArrayList<BaseFragment> fragments;
 
     @Override
