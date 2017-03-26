@@ -190,7 +190,7 @@ public class HomeBean {
             }
         }
 
-        public static class PartitionsBean {
+        public static class PartitionsBean implements Serializable{
             /**
              * partition : {"id":9,"name":"绘画专区","area":"draw","sub_icon":{"src":"http://static.hdslb.com/live-static/images/mobile/android/small/hdpi/9.png?201703141338","height":"32","width":"32"},"count":16}
              * lives : [{"owner":{"face":"http://i1.hdslb.com/bfs/face/e6c43dbbbc99b093bcc636e321afe9eb5552581f.jpg","mid":35853463,"name":"在吗-任性的加班帝"},"cover":{"src":"http://i0.hdslb.com/bfs/live/7dc55f1e44990cc5995e6f582020fbc3020fee07.jpg","height":180,"width":320},"title":"CAD","room_id":519402,"check_version":0,"online":165,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/342348/live_35853463_2348866.flv?wsSecret=3fecbdbb886b2972aa5b697919d49377&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i1.hdslb.com/bfs/face/195f8ce93f0b5526ec41c98914619569b4a9c769.jpg","mid":149066,"name":"Pelokio"},"cover":{"src":"http://i0.hdslb.com/bfs/live/4acadb3b82d9f2f1c115a2b5d264d49316ddc64b.jpg","height":180,"width":320},"title":"边听英语，实力赶稿","room_id":31555,"check_version":0,"online":24,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/586/live_149066_332_c521e483.flv?wsSecret=eb3bbf9f9399a73d5f596cf8d14c97f2&amp;wsTime=58a8f7ea","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i1.hdslb.com/bfs/face/fc49cb0317d6574e8a467b7854faa5dca467be7b.jpg","mid":29776658,"name":"画画的灰MO"},"cover":{"src":"http://i0.hdslb.com/bfs/live/7a56c019babcd4c9597cca693e2f94d271275901.jpg","height":180,"width":320},"title":"随便画点什么，沉迷妹抖龙","room_id":162308,"check_version":0,"online":9,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/543531/live_29776658_3739401.flv?wsSecret=45efa1852ed15c89c7d4f14e6bd153d1&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/3afa26e6d5e3068511a48f65d4e366121d504ecf.jpg","mid":96190044,"name":"一叶绣春刀"},"cover":{"src":"http://i0.hdslb.com/bfs/live/34e13cf902a4d9164debfc2439758f63979be8f5.jpg","height":180,"width":320},"title":"腾讯漫画《入侵》赶稿","room_id":3867714,"check_version":0,"online":57,"area":"绘画专区","area_id":9,"playurl":"http://txy.live-play.acgvideo.com/live-txy/266852/live_96190044_1317086.flv?wsSecret=094e705a5ed2e8216e1d427ccf30d8aa&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/4bee6c1183f63a3e404f202adce3d63d2ae040ad.jpg","mid":36006,"name":"kange"},"cover":{"src":"http://i0.hdslb.com/bfs/live/9d6a6d9a2b2d8988168b7187b28eafa7f78e91bc.jpg","height":180,"width":320},"title":"kange的肝爆机","room_id":12790,"check_version":0,"online":23,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/920740/live_36006_332_c521e483.flv?wsSecret=9c97e3fa32bca22517a5ec555558205b&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/79d71d1c93fbaf31df807d75b83a6022a55373cb.jpg","mid":19707743,"name":"B站制簪人蝉蝉"},"cover":{"src":"http://i0.hdslb.com/bfs/live/40541f92ccf11a79d55e9691aaf2d0dad54bf22e.jpg","height":180,"width":320},"title":"蝉蝉搞事，钻真骨头，卡拉卡拉","room_id":102358,"check_version":0,"online":83,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/808702/live_19707743_5536546.flv?wsSecret=8bd55a070cfdc60effc2d770480ddf4d&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/177a690d764bcef1569483dc647ad63cff75678d.jpg","mid":3177174,"name":"公子安好"},"cover":{"src":"http://i0.hdslb.com/bfs/live/aff70f5fa5d1f7780b65de237aa902b08af1dced.jpg","height":180,"width":320},"title":"送你一份超大的胖次、日系卡牌绘制","room_id":1588108,"check_version":0,"online":27,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/583063/live_3177174_7062644.flv?wsSecret=5d1a43c3179a796b97951cbce1dd4950&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/af2a1c6b0842277f9beeaf9df7a79264e496bca6.jpg","mid":69202135,"name":"我叫小薇"},"cover":{"src":"http://i0.hdslb.com/bfs/live/ea95b0535091d5d94a2d773ca5d835cd939546fd.jpg","height":180,"width":320},"title":"日漫一辣眼睛的zb建模日漫原画入上万 盛途","room_id":2796538,"check_version":0,"online":32,"area":"绘画专区","area_id":9,"playurl":"http://dl.live-play.acgvideo.com/live-dl/305615/live_69202135_6613091.flv?wsSecret=acef3d6f8490e7ef07c32dd63d39f2a0&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/ba500657cf4dce0b71f7ab175b00cf18e53b4bc0.jpg","mid":35817562,"name":"飞行员手绘"},"cover":{"src":"http://i0.hdslb.com/bfs/live/11bac33b99a7890c252444045aed6c863addf399.jpg","height":180,"width":320},"title":"画个小姐姐","room_id":932655,"check_version":0,"online":25,"area":"绘画专区","area_id":9,"playurl":"http://txy.live-play.acgvideo.com/live-txy/360710/live_35817562_4490375.flv?wsSecret=d89443bfedbc5c67be80ca61ed18be2a&amp;wsTime=1490058722","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/62e13ea28a5a692cfe50292b951352ba4fd794f5.jpg","mid":23487796,"name":"聚流陶"},"cover":{"src":"http://i0.hdslb.com/bfs/live/76361.jpg?03210840","height":180,"width":320},"title":"陶叔 每日百画-群499950841","room_id":76361,"check_version":0,"online":24,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/293/live_23487796_5237678.flv?wsSecret=3c9d4fc8ec6e941b592c306529b2d790&amp;wsTime=58a8f7ea","accept_quality":"4","broadcast_type":0,"is_tv":0}]
@@ -307,7 +307,7 @@ public class HomeBean {
                 }
             }
 
-            public static class LivesBean {
+            public static class LivesBean implements Serializable {
                 /**
                  * owner : {"face":"http://i1.hdslb.com/bfs/face/e6c43dbbbc99b093bcc636e321afe9eb5552581f.jpg","mid":35853463,"name":"在吗-任性的加班帝"}
                  * cover : {"src":"http://i0.hdslb.com/bfs/live/7dc55f1e44990cc5995e6f582020fbc3020fee07.jpg","height":180,"width":320}
@@ -432,7 +432,7 @@ public class HomeBean {
                     this.is_tv = is_tv;
                 }
 
-                public static class OwnerBean {
+                public static class OwnerBean implements Serializable {
                     /**
                      * face : http://i1.hdslb.com/bfs/face/e6c43dbbbc99b093bcc636e321afe9eb5552581f.jpg
                      * mid : 35853463
@@ -468,7 +468,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class CoverBean {
+                public static class CoverBean implements Serializable {
                     /**
                      * src : http://i0.hdslb.com/bfs/live/7dc55f1e44990cc5995e6f582020fbc3020fee07.jpg
                      * height : 180

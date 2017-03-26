@@ -38,6 +38,7 @@ public class ListViewAdapter extends BaseAdapter {
     private final List<HomeBean.DataBean.PartitionsBean> data;
     private RotateAnimation rotate = new RotateAnimation(0,360,RotateAnimation.RELATIVE_TO_SELF,0.5f,RotateAnimation.RELATIVE_TO_SELF,0.5f);
     private AlphaAnimation alpha = new AlphaAnimation(0,1);
+    private HomeBean.DataBean.PartitionsBean partitionsBean;
 
     public ListViewAdapter(Context mContext, List<HomeBean.DataBean.PartitionsBean> partitions) {
         this.mContext = mContext;
@@ -69,7 +70,7 @@ public class ListViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        HomeBean.DataBean.PartitionsBean partitionsBean = data.get(position);
+        partitionsBean = data.get(position);
         //用Gilde请求图片
         Glide.with(mContext)
                 .load(partitionsBean.getPartition().getSub_icon().getSrc())
@@ -77,7 +78,7 @@ public class ListViewAdapter extends BaseAdapter {
                 .into(viewHolder.ivLiveHead);
         viewHolder.tvLiveHead.setText(partitionsBean.getPartition().getName());
         //设置直播的数量
-        SpannableStringBuilder builder = new SpannableStringBuilder("当前有"+partitionsBean.getPartition().getCount()+"个直播");
+        SpannableStringBuilder builder = new SpannableStringBuilder("当前有"+ partitionsBean.getPartition().getCount()+"个直播");
         //ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
         ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.parseColor("#fb7299"));
         builder.setSpan(redSpan, 3, (partitionsBean.getPartition().getCount()+"").length()+3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -89,7 +90,7 @@ public class ListViewAdapter extends BaseAdapter {
         initAnimation(viewHolder);
 
         //设置gridview的适配器
-        GridViewAdapter adapter = new GridViewAdapter(mContext,partitionsBean);
+        GridViewAdapter adapter = new GridViewAdapter(mContext, partitionsBean);
         viewHolder.gvHot.setAdapter(adapter);
         return convertView;
     }
@@ -117,6 +118,7 @@ public class ListViewAdapter extends BaseAdapter {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(mContext, "position=="+position, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext,DanmkuVideoActivity.class);
+                intent.putExtra("url",partitionsBean.getLives().get(position));
                 mContext.startActivity(intent);
             }
         });

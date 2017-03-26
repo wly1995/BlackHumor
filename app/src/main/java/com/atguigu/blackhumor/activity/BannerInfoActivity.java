@@ -82,7 +82,7 @@ public class BannerInfoActivity extends BaseActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                progressbar.setVisibility(View.GONE);
+//                progressbar.setVisibility(View.GONE);
             }
         });
 
