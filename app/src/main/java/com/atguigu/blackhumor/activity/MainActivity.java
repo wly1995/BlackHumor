@@ -1,5 +1,6 @@
 package com.atguigu.blackhumor.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.atguigu.blackhumor.sildefragment.MainFragment;
 import com.atguigu.blackhumor.sildefragment.ThemeFragment;
 import com.atguigu.blackhumor.sildefragment.ViewFragment;
 import com.atguigu.blackhumor.sildefragment.WalletFragment;
+import com.atguigu.blackhumor.utils.PreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,7 @@ import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String SWITCH_MODE_KEY = "mode_key";
     @Bind(R.id.nav_view)
     NavigationView navView;
     @Bind(R.id.drawer_layout)
@@ -55,22 +59,52 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void initListener() {
         navView.setNavigationItemSelectedListener(this);
         View headerView = navView.getHeaderView(0);
-        ImageView ivMain  = (ImageView) headerView.findViewById(R.id.iv_main);
-        TextView tvMain = (TextView) headerView.findViewById(R.id.tv_main);
+        ImageView ivMain  = (ImageView) headerView.findViewById(R.id.user_avatar_view);
+        ImageView ivSelectMode = (ImageView) headerView.findViewById(R.id.iv_head_switch_mode);
+        TextView mUserName = (TextView) headerView.findViewById(R.id.user_name);
+        TextView mUserSign = (TextView) headerView.findViewById(R.id.user_other_info);
+        //设置用户名 签名
+        mUserName.setText(getResources().getText(R.string.hotbitmapgg));
+        mUserSign.setText(getResources().getText(R.string.about_user_head_layout));
         ivMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "点击头像", Toast.LENGTH_SHORT).show();
             }
         });
-        tvMain.setOnClickListener(new View.OnClickListener() {
+        boolean flag = PreferenceUtil.getBoolean(SWITCH_MODE_KEY, false);
+        if (flag) {
+            ivSelectMode.setImageResource(R.drawable.ic_switch_daily);
+        } else {
+            ivSelectMode.setImageResource(R.drawable.ic_switch_night);
+        }
+        ivSelectMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "点击登陆", Toast.LENGTH_SHORT).show();
+                switchNightMode();
             }
         });
         NavigationMenuView childAt = (NavigationMenuView) navView.getChildAt(0);
         childAt.setVerticalScrollBarEnabled(false);
+    }
+
+    /**
+     * 日夜间模式切换
+     */
+    private void switchNightMode() {
+
+        boolean isNight = PreferenceUtil.getBoolean(SWITCH_MODE_KEY, false);
+        if (isNight) {
+            // 日间模式
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            PreferenceUtil.putBoolean(SWITCH_MODE_KEY, false);
+        } else {
+            // 夜间模式
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            PreferenceUtil.putBoolean(SWITCH_MODE_KEY, true);
+        }
+
+        recreate();
     }
 
     @Override
@@ -152,15 +186,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if (id == R.id.main_home) {
-            // Handle the camera action
-//            Toast.makeText(this, "照相机", Toast.LENGTH_SHORT).show();
             position = 0;
         } else if (id == R.id.main_vip) {
-
+            //大会员
+            startActivity(new Intent(MainActivity.this, VipActivity.class));
         } else if (id == R.id.main_integral) {
 
         } else if (id == R.id.main_cache) {
-
+            // 离线缓存
+            startActivity(new Intent(MainActivity.this, OffLineDownloadActivity.class));
         } else if (id == R.id.main_later) {
             position = 1;
         } else if (id == R.id.main_collection) {

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.atguigu.blackhumor">
 
-
     <!-- 请求访问网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 请求访问网络 -->
@@ -58,10 +57,13 @@
             android:name=".activity.OriginalActivity"
             android:label="@string/title_activity_original"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.DanmkuVideoActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".activity.DanmkuVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.VipActivity" />
+        <activity android:name=".activity.OffLineDownloadActivity"></activity>
     </application>
 
 </manifest>

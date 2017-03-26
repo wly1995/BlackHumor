@@ -25,8 +25,8 @@ public class MyApplication extends Application {
         handler = new Handler();
         //初始化未捕获异常 上线的时候才打开
         //CrashHandler.getInstance().init();
-    }
 
+    }
     public static Context getContext() {
         return context;
     }
@@ -80,4 +80,6 @@ public class MyApplication extends Application {
         super.onTerminate();
         Log.i("appliction", "onTerminate: ");
     }
+
+
 }
