@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.activity.OriginalActivity;
+import com.atguigu.blackhumor.activity.SearchActivity;
 import com.atguigu.blackhumor.activity.TopicActivity;
 import com.atguigu.blackhumor.bean.FindBean;
 import com.atguigu.blackhumor.utils.Url;
@@ -99,7 +100,10 @@ public class DiscoveryFragment extends BaseFragment {
         tagFlowLayout.setTagListener(new OnTagClickListener() {
             @Override
             public void onClick(TagFlowLayout parent, View view, int position) {
-                Toast.makeText(getActivity(), "click==" + ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "click==" + ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putExtra("content",((TextView) view).getText());
+                getActivity().startActivity(intent);
             }
 
             @Override

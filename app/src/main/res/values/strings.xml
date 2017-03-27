@@ -49,4 +49,5 @@
     <string name="about_user_head_layout">硬币: 47</string>
     <string name="day_night_label">日间模式</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="discover_search_hint">搜索视频 番剧 up主或av号</string>
 </resources>
