@@ -5,12 +5,14 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 /**
  * Created by 万里洋 on 2017/3/27.
  */
 
 @Entity
-public class User {
+public class User implements Serializable{
     @Id
     private Long id;
     private String name;

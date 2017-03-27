@@ -109,6 +109,7 @@ public class MainFragment extends BaseFragment {
             case R.id.tv_login:
 //                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(),LoginActivity.class));
+                getActivity().finish();
                 break;
             case R.id.iv_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();
