@@ -22,6 +22,8 @@ import com.atguigu.blackhumor.fragment.DiscoveryFragment;
 import com.atguigu.blackhumor.fragment.LiveFragment;
 import com.atguigu.blackhumor.fragment.PartitionFragment;
 import com.atguigu.blackhumor.fragment.RecommendFragment;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class MainFragment extends BaseFragment {
 //    LinearLayout contentMain;
     private ArrayList<BaseFragment> fragments;
     private DrawerLayout drawerLayout;
-
+    SearchFragment searchFragment = SearchFragment.newInstance();
     @Override
     protected void initListener() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
@@ -90,6 +92,8 @@ public class MainFragment extends BaseFragment {
         return null;
     }
 
+
+
     @OnClick({R.id.iv_home, R.id.tv_user, R.id.tv_login, R.id.iv_game, R.id.iv_download, R.id.iv_search})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -113,7 +117,14 @@ public class MainFragment extends BaseFragment {
                 Toast.makeText(getActivity(), "下载", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_search:
-                Toast.makeText(getActivity(), "查找", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "查找", Toast.LENGTH_SHORT).show();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        Toast.makeText(getActivity(), ""+keyword, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
                 break;
         }
     }

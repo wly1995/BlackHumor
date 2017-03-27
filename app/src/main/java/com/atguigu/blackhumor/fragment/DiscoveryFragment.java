@@ -19,6 +19,8 @@ import com.github.hymanme.tagflowlayout.TagAdapter;
 import com.github.hymanme.tagflowlayout.TagFlowLayout;
 import com.github.hymanme.tagflowlayout.tags.ColorfulTagView;
 import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 
 import java.util.List;
 
@@ -118,12 +120,19 @@ public class DiscoveryFragment extends BaseFragment {
             return textView;
         }
     }
+    SearchFragment searchFragment = SearchFragment.newInstance();
     @OnClick({R.id.tv_search, R.id.ll_like, R.id.ll_center, R.id.ll_activity, R.id.ll_balckhome,
             R.id.ll_rank, R.id.ll_all, R.id.ll_game, R.id.ll_shop})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search:
-                Toast.makeText(getActivity(), "搜索", Toast.LENGTH_SHORT).show();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        Toast.makeText(getActivity(), ""+keyword, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
                 break;
             case R.id.ll_like:
                 Toast.makeText(getActivity(), "兴趣圈", Toast.LENGTH_SHORT).show();

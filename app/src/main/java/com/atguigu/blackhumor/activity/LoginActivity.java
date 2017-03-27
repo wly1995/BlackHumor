@@ -1,7 +1,9 @@
 package com.atguigu.blackhumor.activity;
 
 import android.content.Intent;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -50,12 +52,55 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        //check();
+        username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (TextUtils.isEmpty(username.getText().toString().trim())){
+                    denglu.setEnabled(false);
+                }else{
+                    denglu.setEnabled(true);
+                }
+            }
+        });
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (TextUtils.isEmpty(password.getText().toString().trim())){
+                    denglu.setEnabled(false);
+                }else {
+                    denglu.setEnabled(true);
+                }
+            }
+        });
+    }
+
+    private void check() {
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(wrod)){
             denglu.setEnabled(true);
         }else {
             denglu.setEnabled(false);
         }
-
     }
 
     @Override
