@@ -47,4 +47,6 @@
     <string name="level_text">LV2</string>
     <string name="members">正式会员</string>
     <string name="about_user_head_layout">硬币: 47</string>
+    <string name="day_night_label">日间模式</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>

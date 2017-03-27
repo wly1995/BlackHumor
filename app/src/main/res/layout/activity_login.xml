@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:minHeight="15dp"
+            android:background="#fb7299"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:id="@+id/toolbar_iv_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"/>
+
+
+                <TextView
+                    android:id="@+id/toolbar_user_name"
+                    android:paddingLeft="15dp"
+                    android:layout_width="120dp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="登录"/>
+
+                <TextView
+                    android:paddingLeft="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="忘记密码?"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_22"/>
+            <ImageView
+                android:id="@+id/b"
+                android:layout_centerInParent="true"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bili_logo"/>
+            <ImageView
+                android:id="@+id/c"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_33"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/two"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_22_hide"/>
+            <ImageView
+                android:id="@+id/e"
+                android:layout_centerInParent="true"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bili_logo"/>
+            <ImageView
+                android:id="@+id/f"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_33_hide"/>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/username"
+            android:drawableLeft="@drawable/ic_login_username_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:hint="请输入你的手机号/邮箱"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/password"
+            android:paddingLeft="5dp"
+            android:drawableLeft="@drawable/ic_login_password_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="请输入你的密码"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/zhuce"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_pin_bg"
+            android:textColor="#fb7299"
+            android:text="注册账号"/>
+
+        <TextView
+            android:id="@+id/denglu"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/login_select"
+            android:layout_margin="5dp"
+            android:layout_height="50dp"
+            android:text="登录"/>
+    </LinearLayout>
+</LinearLayout>

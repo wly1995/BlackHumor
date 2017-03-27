@@ -1,6 +1,7 @@
 package com.atguigu.blackhumor.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      * 缓存的fragment
      */
     private Fragment tempFragment;
+    private boolean isNight;
 
     @Override
     protected void initListener() {
@@ -81,7 +83,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         ivSelectMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchNightMode();
+//                switchNightMode();
+                Toast.makeText(MainActivity.this, "模式", Toast.LENGTH_SHORT).show();
             }
         });
         NavigationMenuView childAt = (NavigationMenuView) navView.getChildAt(0);
@@ -89,21 +92,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     /**
-     * 日夜间模式切换
+     * 日夜间模式切换 不会做
      */
     private void switchNightMode() {
-
-        boolean isNight = PreferenceUtil.getBoolean(SWITCH_MODE_KEY, false);
-        if (isNight) {
-            // 日间模式
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            PreferenceUtil.putBoolean(SWITCH_MODE_KEY, false);
-        } else {
-            // 夜间模式
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            PreferenceUtil.putBoolean(SWITCH_MODE_KEY, true);
+//        boolean isNight = PreferenceUtil.getBoolean(SWITCH_MODE_KEY, false);
+        int mode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (mode == Configuration.UI_MODE_NIGHT_YES) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (mode == Configuration.UI_MODE_NIGHT_NO) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-
         recreate();
     }
 

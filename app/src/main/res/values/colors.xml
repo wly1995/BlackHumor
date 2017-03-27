@@ -87,4 +87,8 @@
     <color name="red_trans">#99F44336</color>
     <color name="colorPrimary">#fb7299</color>
 
+
+    <color name="textColorPrimary">#616161</color>
+    <color name="viewBackground">@android:color/white</color>
+    <color name="colorDayNightChange">@android:color/holo_orange_dark</color>
 </resources>

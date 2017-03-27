@@ -1,5 +1,6 @@
 package com.atguigu.blackhumor.sildefragment;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.LoginActivity;
 import com.atguigu.blackhumor.adapter.ViewPagerAdapter;
 import com.atguigu.blackhumor.fragment.AftersomeFragment;
 import com.atguigu.blackhumor.fragment.BaseFragment;
@@ -50,20 +52,12 @@ public class MainFragment extends BaseFragment {
 //    @Bind(R.id.content_main)
 //    LinearLayout contentMain;
     private ArrayList<BaseFragment> fragments;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void initListener() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+//        getActivity().setSupportActionBar(toolbar);
     }
 
     @Override
@@ -100,14 +94,17 @@ public class MainFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.openDrawer(GravityCompat.START);
                break;
             case R.id.tv_user:
-                Toast.makeText(getActivity(), "用户头像", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "用户头像", Toast.LENGTH_SHORT).show();
+                drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.tv_login:
-                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),LoginActivity.class));
                 break;
             case R.id.iv_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();

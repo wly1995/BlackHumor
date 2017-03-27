@@ -57,13 +57,20 @@
             android:name=".activity.OriginalActivity"
             android:label="@string/title_activity_original"
             android:theme="@style/AppTheme.NoActionBar" />
+        <!-- 直播页面 -->
         <activity
             android:name=".activity.DanmkuVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <!-- 会员界面 -->
         <activity android:name=".activity.VipActivity" />
-        <activity android:name=".activity.OffLineDownloadActivity"></activity>
+        <!-- 离线缓存 -->
+        <activity android:name=".activity.OffLineDownloadActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
