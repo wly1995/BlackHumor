@@ -6,6 +6,8 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.util.Log;
 
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+
 /**
  * Created by 万里洋 on 2017/3/22.
  */
@@ -25,6 +27,7 @@ public class MyApplication extends Application {
         //初始化未捕获异常 上线的时候才打开
         //CrashHandler.getInstance().init();
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        ZXingLibrary.initDisplayOpinion(this);
     }
     public static Context getContext() {
         return context;

@@ -3,6 +3,8 @@ package com.atguigu.blackhumor.fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
@@ -54,6 +56,12 @@ public class ComprehensiveFragment extends BaseFragment {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
         rlConprehensive.setLayoutManager(manager);
         //设置点击事件
+        adapter.setOnItemClickListener(new ComprehensiveAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getActivity(), "position=="+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

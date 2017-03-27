@@ -1,5 +1,6 @@
 package com.atguigu.blackhumor.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -17,6 +18,8 @@ import com.atguigu.blackhumor.fragment.ComprehensiveFragment;
 import com.atguigu.blackhumor.fragment.UPFragment;
 import com.atguigu.blackhumor.fragment.VedioFragment;
 import com.atguigu.blackhumor.fragment.afterFragment;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 
@@ -30,6 +33,7 @@ import butterknife.OnClick;
 import static com.atguigu.blackhumor.R.id.search_edit;
 
 public class SearchActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 5;
     @Bind(R.id.search_scan)
     ImageView searchScan;
     @Bind(search_edit)
@@ -76,7 +80,9 @@ public class SearchActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.search_scan:
-                Toast.makeText(this, "扫一扫", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "扫一扫", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, CaptureActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
             case search_edit:
                 searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
@@ -87,6 +93,25 @@ public class SearchActivity extends AppCompatActivity {
                 });
                 searchFragment.show(getSupportFragmentManager(),SearchFragment.TAG);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
         }
     }
 }

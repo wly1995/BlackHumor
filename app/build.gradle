@@ -41,4 +41,5 @@ dependencies {
     compile 'com.shuyu:GSYVideoPlayer:1.6.1'
     compile 'com.github.ctiao:dfm:0.7.3'
     compile 'com.wenwenwen888:searchbox:1.0.0'
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
 }

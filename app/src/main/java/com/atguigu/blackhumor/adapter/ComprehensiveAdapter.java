@@ -48,6 +48,18 @@ public class ComprehensiveAdapter extends RecyclerView.Adapter<ComprehensiveAdap
         return archive.size();
     }
 
+
+    //定义接口
+    public  interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view , int position);
+    }
+
+    //创建字段有来接收接口实现类的实例
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+    //set方法
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
     class MyViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.iv_cover)
         ImageView ivCover;
@@ -61,9 +73,17 @@ public class ComprehensiveAdapter extends RecyclerView.Adapter<ComprehensiveAdap
         TextView playCount;
         @Bind(R.id.danmaku_count)
         TextView danmakuCount;
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null){
+                        mOnItemClickListener.onItemClick(itemView,getLayoutPosition());
+                    }
+                }
+            });
         }
 
         public void setData(List<SearchBean.DataBean.ItemsBean.ArchiveBean> archive, int position) {
