@@ -31,4 +31,6 @@ public class Url {
     public static String SEARCH_URL = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=";
 
     public static String SEARCH_URL_END = "&mobi_app=android&platform=android&pn=1&ps=20";
+
+    public static String SHOPMALL_URL = "http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
 }

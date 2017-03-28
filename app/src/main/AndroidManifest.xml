@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.atguigu.blackhumor">
 
-
     <!-- 相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 振动 -->
@@ -41,8 +40,7 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.BannerInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -81,9 +79,29 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--搜索界面-->
-        <activity android:name=".activity.SearchActivity"
+        <!-- 搜索界面 -->
+        <activity
+            android:name=".activity.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- 周边商城 -->
+        <activity
+            android:name=".activity.BuyActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.GoodsInfoActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.GenrateActivity" />
+        <activity android:name=".activity.CallCenterActivity"/>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
     </application>
 
 </manifest>

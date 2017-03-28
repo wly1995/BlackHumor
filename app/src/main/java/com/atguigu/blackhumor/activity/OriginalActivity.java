@@ -4,7 +4,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +21,13 @@ import butterknife.OnClick;
 
 public class OriginalActivity extends BaseActivity {
 
+
     @Bind(R.id.iv_home)
     ImageView ivHome;
     @Bind(R.id.iv_user)
-    ImageView tvUser;
+    ImageView ivUser;
+    @Bind(R.id.rl_user)
+    RelativeLayout rlUser;
     @Bind(R.id.tv_login)
     TextView tvLogin;
     @Bind(R.id.iv_game)
@@ -38,12 +40,6 @@ public class OriginalActivity extends BaseActivity {
     TabLayout tbMain;
     @Bind(R.id.vp_main)
     ViewPager vpMain;
-    @Bind(R.id.rl_user)
-    RelativeLayout rlUser;
-    @Bind(R.id.content_main)
-    LinearLayout contentMain;
-
-    String[] titles = {"原创", "全站", "番剧"};
     private List<BaseFragment> fragments;
 
     @Override
@@ -54,7 +50,7 @@ public class OriginalActivity extends BaseActivity {
     @Override
     protected void initData() {
         initFragment();
-        RankAdapter adapter = new RankAdapter(getSupportFragmentManager(),fragments);
+        RankAdapter adapter = new RankAdapter(getSupportFragmentManager(), fragments);
         vpMain.setAdapter(adapter);
         tbMain.setupWithViewPager(vpMain);
     }
@@ -87,7 +83,7 @@ public class OriginalActivity extends BaseActivity {
                 break;
             case R.id.iv_download:
                 Toast.makeText(this, "下载", Toast.LENGTH_SHORT).show();
-               break;
+                break;
             case R.id.iv_search:
                 Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
                 break;

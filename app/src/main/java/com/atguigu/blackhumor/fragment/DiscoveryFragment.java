@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.BuyActivity;
 import com.atguigu.blackhumor.activity.OriginalActivity;
 import com.atguigu.blackhumor.activity.SearchActivity;
 import com.atguigu.blackhumor.activity.TopicActivity;
@@ -151,18 +152,17 @@ public class DiscoveryFragment extends BaseFragment {
                 Toast.makeText(getActivity(), "小黑屋", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_rank:
-//                Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();
                 getActivity().startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.ll_all:
-//                Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();
                 getActivity().startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.ll_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_shop:
-                Toast.makeText(getActivity(), "周边商城", Toast.LENGTH_SHORT).show();
+                getActivity().startActivity(new Intent(getActivity(),BuyActivity.class));
+//                Toast.makeText(getActivity(), "周边商城", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

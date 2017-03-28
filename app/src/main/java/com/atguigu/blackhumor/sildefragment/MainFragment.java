@@ -67,8 +67,6 @@ public class MainFragment extends BaseFragment {
     ImageView ivDownload;
     @Bind(R.id.iv_search)
     ImageView ivSearch;
-//    @Bind(R.id.content_main)
-//    LinearLayout contentMain;
     private ArrayList<BaseFragment> fragments;
     private DrawerLayout drawerLayout;
     SearchFragment searchFragment = SearchFragment.newInstance();
@@ -142,7 +140,7 @@ public class MainFragment extends BaseFragment {
                         ivuser.setImageBitmap(circleBitmap);
                     }
                     //读取完以后布尔值改成false
-                    activity.saveImage(false);
+//                    activity.saveImage(false);
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

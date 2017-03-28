@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            android:background="#fb7299"
+            android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <include layout="@layout/activity_titlebar"/>
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tb_main"
-            android:background="#fb7299"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             app:tabIndicatorColor="#ffffff"/>

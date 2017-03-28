@@ -38,6 +38,7 @@ public class MyApplication extends Application {
         //初始化greenDao
         instances = this;
         setDatabase();
+        //初始化皮肤
     }
 
     /**
