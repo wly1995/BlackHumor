@@ -41,9 +41,6 @@ public class LoginActivity extends BaseActivity {
     TextView denglu;
     //操作类
     private UserDao mUserDao;
-
-
-
     @Override
     protected void initListener() {
         et_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -60,47 +57,6 @@ public class LoginActivity extends BaseActivity {
                 two.setVisibility(View.GONE);
             }
         });
-//        //check();
-//        username.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (TextUtils.isEmpty(username.getText().toString().trim())){
-//                    denglu.setEnabled(false);
-//                }else{
-//                    denglu.setEnabled(true);
-//                }
-//            }
-//        });
-//        password.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (TextUtils.isEmpty(password.getText().toString().trim())){
-//                    denglu.setEnabled(false);
-//                }else {
-//                    denglu.setEnabled(true);
-//                }
-//            }
-//        });
     }
 
     @Override
@@ -171,7 +127,7 @@ public class LoginActivity extends BaseActivity {
     private boolean login(){
         //1.获取输入框里面的东西
        String name1 = et_username.getText().toString().trim();
-        String wrod1 = et_password.getText().toString().trim();
+       String wrod1 = et_password.getText().toString().trim();
         //2.取出数据库中的数据集合，进行遍历
         List<User> user = mUserDao.loadAll();
         for (User list:user) {
@@ -180,14 +136,25 @@ public class LoginActivity extends BaseActivity {
             if (name1.equals(userName) && wrod1.equals(userPw)) {
                 User user1 = new User(null, name1, wrod1);
                 //把登陆成功的状态存入sp
-                boolean isLogin = true;
                 SharedPreferences sp = getSharedPreferences("loginState", MODE_PRIVATE);
-                sp.edit().putBoolean("islogin", isLogin).commit();
+                sp.edit().putBoolean("islogin", true).commit();
+                //把当前登录的用户的名字存储到sp
+                SharedPreferences sp1 = getSharedPreferences("user_info", MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp1.edit();
+//                edit.putString("imageurl",userInfo.getData().getImageurl());
+//                edit.putString("iscredit",userInfo.getData().getIscredit());
+                edit.putString("name",user1.getName());
+//                edit.putString("phone",userInfo.getData().getPhone());
+                edit.commit();
+
+
+
                 //跳转
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("name",user1);
+//                intent.putExtra("name",user1);
                 startActivity(intent);
                 finish();
+
                 return true;
             }
         }

@@ -1,5 +1,6 @@
 package com.atguigu.blackhumor.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -69,14 +70,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        userInfo.setData(dataBean);
 //        return userInfo;
 //    }
-//    public void saveImage(Boolean isUpdate){
-//        SharedPreferences sp = getSharedPreferences("image", MODE_PRIVATE);
-//        sp.edit().putBoolean("update",isUpdate).commit();
-//    }
-//    public Boolean isUpdate(){
-//        SharedPreferences sp = getSharedPreferences("image", MODE_PRIVATE);
-//        return sp.getBoolean("update",false);
-//    }
+    public void saveImage(Boolean isUpdate){
+        SharedPreferences sp = getSharedPreferences("image", MODE_PRIVATE);
+        sp.edit().putBoolean("update",isUpdate).commit();
+    }
+    public Boolean isUpdate(){
+        SharedPreferences sp = getSharedPreferences("image", MODE_PRIVATE);
+        return sp.getBoolean("update",false);
+    }
 //
 //    //清除所有的sp操作
 //    public void clearSp(){
