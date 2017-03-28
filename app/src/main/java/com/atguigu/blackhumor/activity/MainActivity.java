@@ -311,46 +311,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 }
             }
         }
-        //判断是否保存用户的图片
-        if (isUpdate()) {
-            //如果改变过，说明设置的头像
-            File filesDir = null;
-            FileInputStream fis = null;
-            try {
-                //判断是否挂载了sd卡
-                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    //外部存储路径
-                    filesDir = getExternalFilesDir("");
-                } else {
-                    filesDir = getFilesDir(); //内部存储路径
-                }
-                //全路径
-                File path = new File(filesDir, "123.png");
-                if (path.exists()) {
-                    //找到存贮图片的路径开始读取
-                    fis = new FileInputStream(path);
-                    Bitmap bitmap = BitmapFactory.decodeStream(fis);
-                    //变成圆形
-                    Bitmap circleBitmap = BitmapUtils.circleBitmap(bitmap);
-                    if (ivMain!=null){
-
-                        ivMain.setImageBitmap(circleBitmap);
-                    }
-                    //读取完以后布尔值改成false
-                    saveImage(false);
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (fis != null) {
-                        fis.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     private void getData() {

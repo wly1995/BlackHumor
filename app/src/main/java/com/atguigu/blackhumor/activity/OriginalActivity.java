@@ -24,8 +24,8 @@ public class OriginalActivity extends BaseActivity {
 
     @Bind(R.id.iv_home)
     ImageView ivHome;
-    @Bind(R.id.tv_user)
-    TextView tvUser;
+    @Bind(R.id.iv_user)
+    ImageView tvUser;
     @Bind(R.id.tv_login)
     TextView tvLogin;
     @Bind(R.id.iv_game)

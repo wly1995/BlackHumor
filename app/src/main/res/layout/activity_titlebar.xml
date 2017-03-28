@@ -25,15 +25,15 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/tv_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_user"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/bili_default_avatar" />
 
             <ImageView
                 android:layout_width="6dp"
                 android:layout_height="6dp"
-                android:layout_alignRight="@id/tv_user"
+                android:layout_alignRight="@id/iv_user"
                 android:src="@drawable/shape_red" />
         </RelativeLayout>
     </LinearLayout>
