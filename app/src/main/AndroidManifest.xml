@@ -88,10 +88,15 @@
             android:name=".activity.BuyActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.GoodsInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <!-- 商品详情 -->
+        <activity
+            android:name=".activity.GoodsInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- 二维码 -->
         <activity android:name=".activity.GenrateActivity" />
-        <activity android:name=".activity.CallCenterActivity"/>
+        <!-- 客服中心 -->
+        <activity android:name=".activity.CallCenterActivity" />
+        <!-- 支付宝的两个ACTIVITY -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -102,6 +107,7 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
+        <activity android:name=".activity.DownLoadActivity"></activity>
     </application>
 
 </manifest>

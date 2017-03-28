@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.anye.greendao.gen.UserDao;
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.DownLoadActivity;
 import com.atguigu.blackhumor.activity.LoginActivity;
 import com.atguigu.blackhumor.activity.MainActivity;
 import com.atguigu.blackhumor.adapter.ViewPagerAdapter;
@@ -196,8 +197,7 @@ public class MainFragment extends BaseFragment {
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_download:
-//                Toast.makeText(getActivity(), "下载", Toast.LENGTH_SHORT).show();
-
+                startActivity(new Intent(getActivity(),DownLoadActivity.class));
                 break;
             case R.id.iv_search:
                 searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {

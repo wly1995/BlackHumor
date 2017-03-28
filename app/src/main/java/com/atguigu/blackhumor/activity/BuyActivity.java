@@ -119,7 +119,7 @@ public class BuyActivity extends BaseActivity {
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         //得到id
         int  checkId = intent.getIntExtra("checkId",R.id.rb_home);
@@ -133,5 +133,9 @@ public class BuyActivity extends BaseActivity {
                 rgBuy.check(R.id.rb_cart);
                 break;
         }
+    }
+
+    public void check() {
+        rgBuy.check(R.id.rb_home);
     }
 }

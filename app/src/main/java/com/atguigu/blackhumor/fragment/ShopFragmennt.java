@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.activity.MainActivity;
+import com.atguigu.blackhumor.activity.BuyActivity;
 import com.atguigu.blackhumor.adapter.ShoppingCartAdapter;
 import com.atguigu.blackhumor.bean.GoodsBean;
 import com.atguigu.blackhumor.utils.CartStorage;
@@ -245,9 +245,8 @@ public class ShopFragmennt extends BaseFragment {
                 Toast.makeText(getActivity(), "收藏", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_empty_cart_tobuy:
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("checkId",R.id.rb_home);
-                getActivity().startActivity(intent);
+                BuyActivity buyActivity = (BuyActivity) getActivity();
+                buyActivity.check();
                 break;
         }
     }
