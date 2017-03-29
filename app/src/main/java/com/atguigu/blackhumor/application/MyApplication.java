@@ -14,6 +14,8 @@ import com.atguigu.blackhumor.utils.ThemeHelper;
 import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by 万里洋 on 2017/3/22.
  */
@@ -43,6 +45,9 @@ public class MyApplication extends Application implements ThemeUtils.switchColor
         setDatabase();
         //初始化皮肤
         ThemeUtils.setSwitchColor(this);
+        //初始化推送
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);// 初始化 JPush
     }
 
     /**
