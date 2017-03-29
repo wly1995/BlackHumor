@@ -62,4 +62,22 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+
+
+    <style name="ToolBarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorSecondary">#FFFFFFFF</item>
+        <item name="android:colorBackground">#99ffffff</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+    </style>
+
+    <!--设置toolbar弹出菜单的位置-->
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--设置为false即可使menu位置位于toolbar之下-->
+    </style>
+    <!--修改toolbar弹出剩余隐藏菜单条目按钮的样式-->
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_mask</item>
+    </style>
 </resources>

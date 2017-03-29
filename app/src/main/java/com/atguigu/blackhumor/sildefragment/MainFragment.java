@@ -13,6 +13,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -76,7 +79,7 @@ public class MainFragment extends BaseFragment {
     protected void initListener() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        setHasOptionsMenu(true);
+            setHasOptionsMenu(true);
 //        ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
@@ -217,5 +220,29 @@ public class MainFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         setPic();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                //调用系统的分享软件
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+                intent.putExtra(Intent.EXTRA_TEXT, "来自「哔哩哔哩」的分享:" + "http://bmall.bilibili.com/#!/");
+                startActivity(Intent.createChooser(intent, "福利专区"));
+                break;
+            case R.id.action_copy:
+                break;
+            case R.id.action_settings:
+                break;
+        }
+        return true;
     }
 }

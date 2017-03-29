@@ -5,29 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/navigation_header_height"
     android:clickable="true">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
-
-        <ImageView
-            android:id="@+id/background_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|end|bottom"
-            android:clickable="true"
-            android:src="@drawable/home_menu_bg_click"
-            android:tint="@color/nav_head_image_background" />
-    </FrameLayout>
-
     <com.bilibili.magicasakura.widgets.TintRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="@color/theme_color_primary"
         android:paddingTop="@dimen/activity_vertical_margin">
-
         <com.atguigu.blackhumor.view.CircleImageView
             android:id="@+id/user_avatar_view"
             android:layout_width="@dimen/navigation_avatar_size"
@@ -127,6 +110,17 @@
 
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/background_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end|bottom"
+            android:clickable="true"
+            android:src="@drawable/home_menu_bg_click"
+            android:tint="@color/nav_head_image_background" />
 
     </com.bilibili.magicasakura.widgets.TintRelativeLayout>
 
