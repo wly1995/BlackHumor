@@ -92,7 +92,6 @@ public class MainFragment extends BaseFragment {
 
     private void setData() {
         UserDao mUserDao = MyApplication.getInstances().getDaoSession().getUserDao();
-
         SharedPreferences sp1 = getActivity().getSharedPreferences("user_info", MODE_PRIVATE);
         String name1 = sp1.getString("name", "Hero丿残月");
         SharedPreferences sp = getActivity().getSharedPreferences("loginState", MODE_PRIVATE);

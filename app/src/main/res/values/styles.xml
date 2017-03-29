@@ -1,17 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#fb7299</item>
-        <item name="colorPrimaryDark">#fb7299</item>
-        <item name="colorAccent">#fb7299</item>
-    </style>
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">#fb7299</item>-->
+        <!--<item name="colorPrimaryDark">#fb7299</item>-->
+        <!--<item name="colorAccent">#fb7299</item>-->
+    <!--</style>-->
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+    <!--<style name="AppTheme.NoActionBar">-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="windowNoTitle">true</item>-->
+    <!--</style>-->
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -42,11 +42,13 @@
         <!-- 指定消失的动画xml -->
     </style>
 
-    <!--<style name="BrowserThemeDefault" parent="@android:style/Theme">-->
-    <!--<item name="bookimage">@drawable/day</item>-->
-    <!--</style>-->
 
-    <!--<style name="BrowserThemeNight" parent="@android:style/Theme">-->
-    <!--<item name="nightimage">@drawable/night</item>-->
-    <!--</style>-->
+    <style name="Widget.App.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:gravity">center_vertical</item>
+        <item name="contentInsetStart">0dp</item>
+    </style>
+
+    <style name="CollapsingToolbarTitleStyle.About" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
 </resources>

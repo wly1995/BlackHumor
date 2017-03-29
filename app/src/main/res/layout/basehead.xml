@@ -6,20 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-    <android.support.design.widget.AppBarLayout
+    <com.bilibili.magicasakura.widgets.TintAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:minHeight="30dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@color/theme_color_primary"
+        >
 
-    <android.support.v7.widget.Toolbar
+    <com.bilibili.magicasakura.widgets.TintToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:background="@color/theme_color_primary"
         app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-        android:background="#fb7299"
         app:popupTheme="@style/AppTheme.PopupOverlay" >
         <include layout="@layout/activity_titlebar"/>
-    </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+    </com.bilibili.magicasakura.widgets.TintToolbar>
+    </com.bilibili.magicasakura.widgets.TintAppBarLayout>
 </android.support.design.widget.CoordinatorLayout>

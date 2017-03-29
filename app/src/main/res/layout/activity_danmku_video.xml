@@ -3,28 +3,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout android:id="@+id/app_bar_layout"
+    <com.bilibili.magicasakura.widgets.TintAppBarLayout
+        android:id="@+id/app_bar_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/theme_color_primary"
         app:elevation="@dimen/app_bar_elevation">
 
-        <android.support.v7.widget.Toolbar
+        <com.bilibili.magicasakura.widgets.TintToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@color/theme_color_primary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextAppearance="@style/ToolBar.TitleText" >
-            <LinearLayout
+            <com.bilibili.magicasakura.widgets.TintLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:background="@color/colorPrimary">
+                android:background="@color/theme_color_primary">
 
                 <ImageButton
                     android:id="@+id/ib_back"
@@ -53,10 +54,9 @@
                     android:visibility="invisible"
                     android:background="@drawable/ic_menu_moreoverflow" />
 
-            </LinearLayout>
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
+            </com.bilibili.magicasakura.widgets.TintLinearLayout>
+        </com.bilibili.magicasakura.widgets.TintToolbar>
+    </com.bilibili.magicasakura.widgets.TintAppBarLayout>
 
 
     <FrameLayout
@@ -215,6 +215,4 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_height"
         android:background="@color/line_bg" />
-
-
 </LinearLayout>

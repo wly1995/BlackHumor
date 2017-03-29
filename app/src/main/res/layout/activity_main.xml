@@ -7,47 +7,31 @@
     android:fitsSystemWindows="true"
     tools:context="com.atguigu.blackhumor.activity.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.bilibili.magicasakura.widgets.TintAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:minHeight="30dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@color/theme_color_primary">
 
-        <android.support.v7.widget.Toolbar
+        <com.bilibili.magicasakura.widgets.TintToolbar
             android:id="@+id/toolbar"
             android:layout_marginLeft="-16dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            android:background="@color/colorPrimary"
+            android:background="@color/theme_color_primary"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
             <include layout="@layout/activity_titlebar"/>
-        </android.support.v7.widget.Toolbar>
+        </com.bilibili.magicasakura.widgets.TintToolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tb_main"
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="@color/theme_color_primary"
             app:tabIndicatorColor="#ffffff"/>
-    </android.support.design.widget.AppBarLayout>
-
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
-
-    <!--<android.support.v4.widget.NestedScrollView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-        <!--android:scrollbars="none"-->
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
-        <!--<include layout="@layout/content_main" />-->
-    <!--</android.support.v4.widget.NestedScrollView>-->
-
+    </com.bilibili.magicasakura.widgets.TintAppBarLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"

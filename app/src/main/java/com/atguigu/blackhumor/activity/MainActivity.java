@@ -1,6 +1,8 @@
 package com.atguigu.blackhumor.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -45,6 +47,8 @@ import com.atguigu.blackhumor.sildefragment.ThemeFragment;
 import com.atguigu.blackhumor.sildefragment.ViewFragment;
 import com.atguigu.blackhumor.sildefragment.WalletFragment;
 import com.atguigu.blackhumor.utils.BitmapUtils;
+import com.atguigu.blackhumor.utils.ThemeHelper;
+import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -91,7 +95,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     private GoogleApiClient client;
     private FileInputStream fis;
-    boolean isNight = false;
+    //放主题的集合
+    int[] themes = {ThemeHelper.CARD_SAKURA,ThemeHelper.CARD_HOPE,ThemeHelper.CARD_STORM,ThemeHelper.CARD_WOOD,
+            ThemeHelper.CARD_LIGHT,ThemeHelper.CARD_THUNDER,ThemeHelper.CARD_SAND,ThemeHelper.CARD_FIREY};
+    //表示选择哪个主题
+    private int postion;
+
     @Override
     protected void initListener() {
         navView.setNavigationItemSelectedListener(this);
@@ -117,17 +126,50 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         ivSelectMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNight){
-                    // 恢复应用默认皮肤
-                    isNight = false;
-                }else{
-                    // 指定皮肤插件
-                    isNight = true;
+                postion++;
+                if (postion < themes.length) {
+
+                } else {
+                    postion = 0;
                 }
+                onConfirm(themes[postion]);
             }
         });
         NavigationMenuView childAt = (NavigationMenuView) navView.getChildAt(0);
         childAt.setVerticalScrollBarEnabled(false);
+    }
+    //确定选择哪个主题的方法
+    private void onConfirm(int currentTheme) {
+        if (ThemeHelper.getTheme(MainActivity.this) != currentTheme) {
+            ThemeHelper.setTheme(MainActivity.this, currentTheme);
+            ThemeUtils.refreshUI(MainActivity.this, new ThemeUtils.ExtraRefreshable() {
+                        @Override
+                        public void refreshGlobal(Activity activity) {
+                            //for global setting, just do once
+                            if (Build.VERSION.SDK_INT >= 21) {
+                                final MainActivity context = MainActivity.this;
+                                ActivityManager.TaskDescription taskDescription = new ActivityManager.TaskDescription(null, null, ThemeUtils.getThemeAttrColor(context, android.R.attr.colorPrimary));
+                                setTaskDescription(taskDescription);
+                                getWindow().setStatusBarColor(ThemeUtils.getColorById(context, R.color.theme_color_primary_dark));
+                            }
+                        }
+
+                        @Override
+                        public void refreshSpecificView(View view) {
+                            //TODO: will do this for each traversal
+                        }
+                    }
+            );
+           /* View view = findViewById(R.id.snack_layout);
+            if (view != null) {
+                TextView textView = (TextView) view.findViewById(R.id.content);
+                textView.setText(getSnackContent(currentTheme));
+                SnackAnimationUtil.with(this, R.anim.snack_in, R.anim.snack_out)
+                        .setDismissDelayTime(1000)
+                        .setTarget(view)
+                        .play();
+            }*/
+        }
     }
 
     private String changeName[] = {"相机", "相册"};

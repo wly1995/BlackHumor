@@ -72,9 +72,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 会员界面 -->
-        <activity android:name=".activity.VipActivity" />
+        <activity android:name=".activity.VipActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!-- 离线缓存 -->
-        <activity android:name=".activity.OffLineDownloadActivity" />
+        <activity android:name=".activity.OffLineDownloadActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"
