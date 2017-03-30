@@ -2,6 +2,7 @@ package com.atguigu.blackhumor.bean;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class RecommendBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * title : 许嵩3.18上海演唱会《深夜书店》
          * cover : http://i1.hdslb.com/bfs/archive/e845d79f752ce2eda3ad916871507ad1ab5ba9ae.jpg
@@ -270,7 +271,7 @@ public class RecommendBean {
             this.dislike_reasons = dislike_reasons;
         }
 
-        public static class TagBean {
+        public static class TagBean implements Serializable{
             /**
              * tag_id : 1257849
              * tag_name : 内地音乐
@@ -296,7 +297,7 @@ public class RecommendBean {
             }
         }
 
-        public static class DislikeReasonsBean {
+        public static class DislikeReasonsBean  implements Serializable{
             /**
              * reason_id : 4
              * reason_name : UP主:拉西瓜的草莓MEI

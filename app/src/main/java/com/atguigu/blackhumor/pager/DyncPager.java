@@ -1,14 +1,15 @@
 package com.atguigu.blackhumor.pager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.activity.VideoDetailsActivity;
 import com.atguigu.blackhumor.adapter.SynPagerAdapter;
 import com.atguigu.blackhumor.bean.RecommendBean;
 import com.atguigu.blackhumor.utils.Url;
@@ -16,6 +17,7 @@ import com.atguigu.blackhumor.view.LoadingPager;
 
 /**
  * Created by 万里洋 on 2017/3/22.
+ *
  */
 
 public class DyncPager extends LoadingPager {
@@ -57,7 +59,7 @@ public class DyncPager extends LoadingPager {
     }
 
     private void processData(String json) {
-        RecommendBean recommendBean = JSON.parseObject(json, RecommendBean.class);
+        final RecommendBean recommendBean = JSON.parseObject(json, RecommendBean.class);
 //        Log.e("TAG",recommendBean.getData().get(0).getTitle());
         SynPagerAdapter adapter = new SynPagerAdapter(mContext, recommendBean);
         recyclerView.setAdapter(adapter);
@@ -68,7 +70,10 @@ public class DyncPager extends LoadingPager {
         adapter.setOnItemClickListener(new SynPagerAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, VideoDetailsActivity.class);
+                intent.putExtra("video",recommendBean.getData().get(position));
+                mContext.startActivity(intent);
             }
         });
     }

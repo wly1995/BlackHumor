@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.atguigu.blackhumor">
+
     <!-- 相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 振动 -->
@@ -72,12 +73,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 会员界面 -->
-        <activity android:name=".activity.VipActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.VipActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!-- 离线缓存 -->
-        <activity android:name=".activity.OffLineDownloadActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.OffLineDownloadActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"
@@ -110,10 +113,16 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <activity android:name=".activity.DownLoadActivity"/>
-        <service android:name="cn.jpush.android.service.PushService"
+        <activity android:name=".activity.DownLoadActivity" />
+
+        <service
+            android:name="cn.jpush.android.service.PushService"
             android:process=":multiprocess"
-            tools:node="replace" >
-        </service>
+            tools:node="replace"/>
+
+        <activity android:name=".activity.VideoDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.MainActivity"/>
     </application>
+
 </manifest>
