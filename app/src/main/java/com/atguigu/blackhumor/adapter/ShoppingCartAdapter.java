@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.activity.GoodsInfoActivity;
+import com.atguigu.blackhumor.mvp.view.activity.GoodsInfoActivity;
 import com.atguigu.blackhumor.bean.GoodsBean;
-import com.atguigu.blackhumor.fragment.UserFragment;
+import com.atguigu.blackhumor.mvp.view.fragment.UserFragment;
 import com.atguigu.blackhumor.utils.CartStorage;
 import com.atguigu.blackhumor.view.AddSubView;
 import com.bumptech.glide.Glide;

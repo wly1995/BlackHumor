@@ -5,8 +5,8 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atguigu.blackhumor.pager.DyncPager;
-import com.atguigu.blackhumor.pager.SynPager;
+import com.atguigu.blackhumor.mvp.view.pager.DyncPager;
+import com.atguigu.blackhumor.mvp.view.pager.SynPager;
 import com.atguigu.blackhumor.view.LoadingPager;
 
 import java.util.ArrayList;

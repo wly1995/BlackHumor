@@ -27,7 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.WelcomeActivity"
+            android:name=".mvp.view.activity.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -37,13 +37,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".mvp.view.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.BannerInfoActivity"
+            android:name=".mvp.view.activity.BannerInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.BodyInfoActivity"
+            android:name=".mvp.view.activity.BodyInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -54,51 +54,51 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".activity.TopicActivity"
+            android:name=".mvp.view.activity.TopicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.TopicWebActivity"
+            android:name=".mvp.view.activity.TopicWebActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.OriginalActivity"
+            android:name=".mvp.view.activity.OriginalActivity"
             android:label="@string/title_activity_original"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 直播页面 -->
         <activity
-            android:name=".activity.DanmkuVideoActivity"
+            android:name=".mvp.view.activity.DanmkuVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 会员界面 -->
         <activity
-            android:name=".activity.VipActivity"
-            android:parentActivityName=".activity.MainActivity"
+            android:name=".mvp.view.activity.VipActivity"
+            android:parentActivityName=".mvp.view.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 离线缓存 -->
         <activity
-            android:name=".activity.OffLineDownloadActivity"
+            android:name=".mvp.view.activity.OffLineDownloadActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".mvp.view.activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 搜索界面 -->
         <activity
-            android:name=".activity.SearchActivity"
+            android:name=".mvp.view.activity.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 周边商城 -->
         <activity
-            android:name=".activity.BuyActivity"
+            android:name=".mvp.view.activity.BuyActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 商品详情 -->
         <activity
-            android:name=".activity.GoodsInfoActivity"
+            android:name=".mvp.view.activity.GoodsInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!-- 二维码 -->
-        <activity android:name=".activity.GenrateActivity" />
+        <activity android:name=".mvp.view.activity.GenrateActivity" />
         <!-- 客服中心 -->
-        <activity android:name=".activity.CallCenterActivity" />
+        <activity android:name=".mvp.view.activity.CallCenterActivity" />
         <!-- 支付宝的两个ACTIVITY -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -110,16 +110,16 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <activity android:name=".activity.DownLoadActivity" />
+        <activity android:name=".mvp.view.activity.DownLoadActivity" />
 
         <service
             android:name="cn.jpush.android.service.PushService"
             android:process=":multiprocess"
             tools:node="replace"/>
 
-        <activity android:name=".activity.VideoDetailsActivity"
+        <activity android:name=".mvp.view.activity.VideoDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".activity.MainActivity"/>
+            android:parentActivityName=".mvp.view.activity.MainActivity"/>
     </application>
 
 </manifest>

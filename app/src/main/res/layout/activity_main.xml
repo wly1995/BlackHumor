@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.atguigu.blackhumor.activity.MainActivity">
+    tools:context=".mvp.view.activity.MainActivity">
 
     <com.bilibili.magicasakura.widgets.TintAppBarLayout
         android:layout_width="match_parent"

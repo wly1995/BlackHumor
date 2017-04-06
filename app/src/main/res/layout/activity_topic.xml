@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.atguigu.blackhumor.activity.TopicActivity">
+    tools:context=".mvp.view.activity.TopicActivity">
 
     <include layout="@layout/activity_basehead"/>
 

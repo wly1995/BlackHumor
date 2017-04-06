@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.activity.DanmkuVideoActivity;
+import com.atguigu.blackhumor.mvp.view.activity.DanmkuVideoActivity;
 import com.atguigu.blackhumor.bean.HomeBean;
 import com.atguigu.blackhumor.view.NoScrollGridView;
 import com.bumptech.glide.Glide;

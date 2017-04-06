@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.activity.BannerInfoActivity;
+import com.atguigu.blackhumor.mvp.view.activity.BannerInfoActivity;
 import com.atguigu.blackhumor.bean.HomeBean;
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;

@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.activity.BodyInfoActivity;
+import com.atguigu.blackhumor.mvp.view.activity.BodyInfoActivity;
 import com.atguigu.blackhumor.bean.PartBean;
 import com.atguigu.blackhumor.view.NoScrollGridView;
 import com.bumptech.glide.Glide;

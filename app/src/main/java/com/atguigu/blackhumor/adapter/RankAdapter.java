@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.atguigu.blackhumor.fragment.BaseFragment;
+import com.atguigu.blackhumor.mvp.view.fragment.BaseFragment;
 
 import java.util.List;
 
