@@ -1,4 +1,4 @@
-package com.atguigu.blackhumor.mvp.view.sildefragment;
+package com.atguigu.blackhumor.ui.sildefragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,18 +23,18 @@ import android.widget.Toast;
 
 import com.anye.greendao.gen.UserDao;
 import com.atguigu.blackhumor.R;
+import com.atguigu.blackhumor.application.MyApplication;
+import com.atguigu.blackhumor.service.entity.User;
 import com.atguigu.blackhumor.ui.activity.DownLoadActivity;
 import com.atguigu.blackhumor.ui.activity.LoginActivity;
 import com.atguigu.blackhumor.ui.activity.MainActivity;
 import com.atguigu.blackhumor.ui.adapter.ViewPagerAdapter;
-import com.atguigu.blackhumor.application.MyApplication;
-import com.atguigu.blackhumor.service.entity.User;
-import com.atguigu.blackhumor.ui.activity.fragment.AftersomeFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.BaseFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.DiscoveryFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.LiveFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.PartitionFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.RecommendFragment;
+import com.atguigu.blackhumor.ui.fragment.AftersomeFragment;
+import com.atguigu.blackhumor.ui.fragment.BaseFragment;
+import com.atguigu.blackhumor.ui.fragment.DiscoveryFragment;
+import com.atguigu.blackhumor.ui.fragment.LiveFragment;
+import com.atguigu.blackhumor.ui.fragment.PartitionFragment;
+import com.atguigu.blackhumor.ui.fragment.RecommendFragment;
 import com.atguigu.blackhumor.utils.BitmapUtils;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;

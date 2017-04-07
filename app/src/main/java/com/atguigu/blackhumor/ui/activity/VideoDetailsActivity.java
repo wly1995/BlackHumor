@@ -19,12 +19,12 @@ import android.widget.TextView;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.service.entity.RecommendBean;
-import com.atguigu.blackhumor.ui.activity.fragment.AftersomeFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.BaseFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.DiscoveryFragment;
+import com.atguigu.blackhumor.ui.fragment.AftersomeFragment;
+import com.atguigu.blackhumor.ui.fragment.BaseFragment;
+import com.atguigu.blackhumor.ui.fragment.DiscoveryFragment;
+import com.atguigu.blackhumor.ui.view.AppBarStateChangeEvent;
 import com.atguigu.blackhumor.utils.DisplayUtil;
 import com.atguigu.blackhumor.utils.SystemBarHelper;
-import com.atguigu.blackhumor.ui.view.AppBarStateChangeEvent;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.flyco.tablayout.SlidingTabLayout;

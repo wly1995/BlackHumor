@@ -13,11 +13,11 @@ import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.ui.adapter.SearchAdapter;
-import com.atguigu.blackhumor.ui.activity.fragment.BaseFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.ComprehensiveFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.UPFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.VedioFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.afterFragment;
+import com.atguigu.blackhumor.ui.fragment.BaseFragment;
+import com.atguigu.blackhumor.ui.fragment.ComprehensiveFragment;
+import com.atguigu.blackhumor.ui.fragment.UPFragment;
+import com.atguigu.blackhumor.ui.fragment.VedioFragment;
+import com.atguigu.blackhumor.ui.fragment.afterFragment;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wyt.searchbox.SearchFragment;

@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.ui.adapter.RankAdapter;
-import com.atguigu.blackhumor.ui.activity.fragment.BaseFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.OriginFragment;
+import com.atguigu.blackhumor.ui.fragment.BaseFragment;
+import com.atguigu.blackhumor.ui.fragment.OriginFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,10 +10,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.ui.activity.fragment.BaseFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.HomeFragment;
-import com.atguigu.blackhumor.ui.activity.fragment.ShopFragmennt;
-import com.atguigu.blackhumor.ui.activity.fragment.UserFragment;
+import com.atguigu.blackhumor.ui.fragment.BaseFragment;
+import com.atguigu.blackhumor.ui.fragment.HomeFragment;
+import com.atguigu.blackhumor.ui.fragment.ShopFragmennt;
+import com.atguigu.blackhumor.ui.fragment.UserFragment;
 
 import java.util.ArrayList;
 import java.util.List;

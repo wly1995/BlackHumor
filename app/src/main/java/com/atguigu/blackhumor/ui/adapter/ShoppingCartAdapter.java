@@ -10,17 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.blackhumor.R;
-import com.atguigu.blackhumor.ui.activity.GoodsInfoActivity;
 import com.atguigu.blackhumor.service.entity.GoodsBean;
-import com.atguigu.blackhumor.ui.activity.fragment.UserFragment;
-import com.atguigu.blackhumor.utils.CartStorage;
+import com.atguigu.blackhumor.ui.activity.GoodsInfoActivity;
+import com.atguigu.blackhumor.ui.fragment.UserFragment;
 import com.atguigu.blackhumor.ui.view.AddSubView;
+import com.atguigu.blackhumor.utils.CartStorage;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 /**
  * Created by 万里洋 on 2017/2/28.
  */
