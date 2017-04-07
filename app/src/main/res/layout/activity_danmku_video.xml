@@ -66,7 +66,7 @@
         android:background="@drawable/shadow_gradient_reserve">
 
 
-        <com.atguigu.blackhumor.player.DanmakuVideoPlayer
+        <com.atguigu.blackhumor.service.player.DanmakuVideoPlayer
             android:id="@+id/danmaku_player"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -161,7 +161,7 @@
         android:background="@color/card_view_background">
 
 
-        <com.atguigu.blackhumor.view.CircleImageView
+        <com.atguigu.blackhumor.ui.view.CircleImageView
             android:id="@+id/user_pic"
             android:layout_width="@dimen/user_avatar_size"
             android:layout_height="@dimen/user_avatar_size"

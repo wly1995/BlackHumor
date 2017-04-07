@@ -39,7 +39,7 @@
             android:text="当前有个直播" />
     </LinearLayout>
 
-    <com.atguigu.blackhumor.view.NoScrollGridView
+    <com.atguigu.blackhumor.ui.view.NoScrollGridView
         android:id="@+id/gv_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

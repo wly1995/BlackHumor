@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
-import com.atguigu.blackhumor.bean.GoodsBean;
+import com.atguigu.blackhumor.service.entity.GoodsBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

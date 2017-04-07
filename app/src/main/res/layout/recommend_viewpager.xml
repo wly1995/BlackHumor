@@ -3,9 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
-    <com.atguigu.blackhumor.view.NoscrollListView
+    <com.atguigu.blackhumor.ui.view.NoscrollListView
         android:id="@+id/lv_live"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.atguigu.blackhumor.view.NoscrollListView>
+    </com.atguigu.blackhumor.ui.view.NoscrollListView>
 </LinearLayout>

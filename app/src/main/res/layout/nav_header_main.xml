@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:background="@color/theme_color_primary"
         android:paddingTop="@dimen/activity_vertical_margin">
-        <com.atguigu.blackhumor.view.CircleImageView
+        <com.atguigu.blackhumor.ui.view.CircleImageView
             android:id="@+id/user_avatar_view"
             android:layout_width="@dimen/navigation_avatar_size"
             android:layout_height="@dimen/navigation_avatar_size"

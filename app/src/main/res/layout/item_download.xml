@@ -18,7 +18,7 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <com.atguigu.blackhumor.view.MyProgressBar
+        <com.atguigu.blackhumor.ui.view.MyProgressBar
             android:id="@+id/progresss"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -28,7 +28,7 @@
             app:textColor="#000"
             app:textSize="12sp">
 
-        </com.atguigu.blackhumor.view.MyProgressBar>
+        </com.atguigu.blackhumor.ui.view.MyProgressBar>
 
         <TextView
             android:id="@+id/tv_progress"
