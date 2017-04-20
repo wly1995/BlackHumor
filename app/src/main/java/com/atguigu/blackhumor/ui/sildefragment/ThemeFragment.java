@@ -1,4 +1,4 @@
-package com.atguigu.blackhumor.mvp.view.sildefragment;
+package com.atguigu.blackhumor.ui.sildefragment;
 
 import com.atguigu.blackhumor.R;
 import com.atguigu.blackhumor.ui.fragment.BaseFragment;
