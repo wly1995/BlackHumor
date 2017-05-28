@@ -92,7 +92,7 @@ public class DanmkuVideoActivity extends BaseActivity {
         danmakuVideoPlayer.setEnlargeImageRes(R.drawable.ic_live_palyer_zoom_in);
 
 //        String url = "http://baobab.wdjcdn.com/14564977406580.mp4";
-        //String url = "https://res.exexm.com/cw_145225549855002";
+        String url = "https://res.exexm.com/cw_145225549855002";
         danmakuVideoPlayer.setUp(livesBean.getPlayurl(), true, null, livesBean.getTitle());
 
         //增加封面
